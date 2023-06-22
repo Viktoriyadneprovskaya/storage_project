@@ -1,0 +1,35 @@
+<!--<?xml version='1.0' encoding='utf-8'?>-->
+<!--<!DOCTYPE hibernate-configuration PUBLIC-->
+<!--        "-//Hibernate/Hibernate Configuration DTD//EN"-->
+<!--        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">-->
+<!--<hibernate-configuration>-->
+<!--    <session-factory>-->
+<!--        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>-->
+<!--        <property name="connection.username">postgres</property>-->
+<!--        <property name="connection.password">mkibsh2503</property>-->
+<!--        <property name="hibernate.default_schema">storagedb</property>-->
+<!--        <property name="connection.driver_class">org.postgresql.Driver</property>-->
+<!--        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>-->
+
+<!--        &lt;!&ndash;logging SQL&ndash;&gt;-->
+<!--        <property name="hibernate.show_sql">true</property>-->
+<!--        <property name="hibernate.format_sql">true</property>-->
+<!--        <property name="hibernate.connection.autocommit">true</property>-->
+<!--        &lt;!&ndash;     DB schema will be updated if needed &ndash;&gt;-->
+<!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
+<!--        <mapping class="com.example.storage_project.Address"/>-->
+<!--        <mapping class="com.example.storage_project.City"/>-->
+<!--        <mapping class="com.example.storage_project.Contractors"/>-->
+<!--        <mapping class="com.example.storage_project.ContractorType"/>-->
+<!--        <mapping class="com.example.storage_project.Country"/>-->
+<!--        <mapping class="com.example.storage_project.Document"/>-->
+<!--        <mapping class="com.example.storage_project.DocumentDetails"/>-->
+<!--        <mapping class="com.example.storage_project.Employee"/>-->
+<!--        <mapping class="com.example.storage_project.InvoiceType"/>-->
+<!--        <mapping class="com.example.storage_project.JobTitle"/>-->
+<!--        <mapping class="com.example.storage_project.MeasureUnit"/>-->
+<!--        <mapping class="com.example.storage_project.PriceType"/>-->
+<!--        <mapping class="com.example.storage_project.Product"/>-->
+<!--        <mapping class="com.example.storage_project.Storage"/>-->
+<!--    </session-factory>-->
+<!--</hibernate-configuration>-->

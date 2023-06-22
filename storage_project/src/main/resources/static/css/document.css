@@ -1,0 +1,37 @@
+/*.table {*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 1fr 80%;*/
+/*    max-width: 480px;*/
+/*    border: 1px solid black;*/
+/*    !*border-bottom: 1px solid black;*!*/
+/*}*/
+.grid-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 10px;
+    background-color: #eff0f1;
+    padding: 10px;
+}
+
+.grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: start;
+    padding: 5px;
+    border: black solid 2px;
+}
+.document-title{
+    display: flex;
+    padding-top: 50px;
+    padding-left: 10px;
+}
+.line{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    border: 2px solid black;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+.line > span{
+    padding: 8px 4px;
+    border: 1px solid black;
+}

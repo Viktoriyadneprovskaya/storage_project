@@ -1,0 +1,132 @@
+.wrapper {
+    display: flex;
+}
+
+
+.block_left, .block_center, .block_right {
+    flex: 1;
+}
+
+.block_left {
+    background: #94c2dc;
+    max-width: 250px;
+}
+.block_center {
+    background: #FFF;
+    max-width: 99%;
+}
+
+img{
+    height: 70px;
+    width: 70px;
+}
+
+a{
+    font-size: xx-large;
+    color: #fff;
+}
+.bar {
+    background: #F3F3F3;
+    justify-content: flex-end;
+}
+.logo {
+    height: 80px;
+    background-color: #FFF;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.menu span, .menu a {
+    display: block;
+}
+.menu span {
+    padding-left: 20px;
+    color: #C3D6DD;
+    margin: 20px 0;
+}
+.menu a {
+    padding-left: 50px;
+    color: #87949A;
+    margin: 10px 0;
+}
+.aline{
+    margin-bottom: 10px;
+
+}
+.menu-style{
+    display: flex;
+    flex-direction: column;
+}
+.nav a {
+    display: inline-block;
+    color: #7C7D81;
+    padding: 10px;
+    margin: 0 10px;
+}
+.strech{
+    width: 100%;
+}
+.rep{
+    margin-top: 40px;
+}
+.cntr-grp{
+    width: 100%;
+}
+
+.d-flex {
+    width: 100%;
+}
+
+
+
+.page{
+    display: flex;
+    flex-direction:column;
+    align-items:center
+}
+
+.title{
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/*уже есть такой класс*/
+.wrapper{
+    margin: 30px 30px 30px;
+}
+.buttonStyle{
+    margin: 30px 90px 30px;
+}
+.modal{
+    background-color: #c2bfbf;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal-form{
+    background-color: #ffffff;
+    width: 40%;
+    padding: 24px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+}
+.close{
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+.aline-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.edge{
+    margin-bottom: 5px;
+    width: 60%;
+}
+.error{
+    display: none;
+}
+.show{
+    display: block !important;
+}
