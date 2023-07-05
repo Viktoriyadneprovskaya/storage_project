@@ -1,6 +1,6 @@
 package com.example.storage_project.command;
 
-import com.example.storage_project.JobTitle;
+import com.example.storage_project.model.JobTitle;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +18,9 @@ import lombok.ToString;
 @ToString
 @Builder
 public class EmployeeUpdateCommand {
+    Long id;
+    String username;
     String firstName;
-    String lastname;
-    JobTitle jobTitle;
+    String lastName;
+    Long jobTitle;
 }

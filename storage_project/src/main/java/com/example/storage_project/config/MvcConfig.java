@@ -2,6 +2,7 @@ package com.example.storage_project.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -27,5 +28,10 @@ public class MvcConfig extends WebMvcConfigurationSupport {
         resolver.setPrefix("/view/");
         resolver.setSuffix(".jsp");
         return resolver;
+    }
+
+    @Bean
+    public FormattingConversionServiceFactoryBean formatter() {
+        return new FormattingConversionServiceFactoryBean();
     }
 }

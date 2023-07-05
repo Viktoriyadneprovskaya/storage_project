@@ -8,21 +8,8 @@ add_button.onclick = function () {
 
 add_close_span.onclick = function () {
     modal.style.visibility = "hidden"
-    // const error_username = document.getElementById('error-username')
-    // error_username.classList.remove('s-visible')
-    // const error_firstname = document.getElementById('error-firstname')
-    // error_firstname.classList.remove('s-visible')
-    // const error_lastname = document.getElementById('error-lastname')
-    //
-    // error_lastname.classList.remove('s-visible')
-    // const error_email = document.getElementById('error-email')
-    // error_email.classList.remove('s-visible')
-    // const error_address = document.getElementById('error-address')
-    // error_address.classList.remove('s-visible')
-    // const error_phone = document.getElementById('error-phone')
-    // error_phone.classList.remove('s-visible')
-    // // and date
-    document.getElementById('name-input').value = ''
+
+    document.getElementById('product-input').value = ''
     document.getElementById('measureUnit-input').value = ''
     document.getElementById('shelfLife-input').value = ''
     document.getElementById('basicPrice-input').value = ''
@@ -35,7 +22,7 @@ edit_close_span.onclick = function () {
     edit_modal.classList.remove('m-visible')
 }
 
-function openEditModal(productId,name,measureUnit, shelfLife, basicPrice ) {
+function openEditModal(productId,name,measureUnit, shelfLife, basicPrice) {
     edit_modal.classList.add('m-visible')
     const edit_productId = document.getElementById('edit-productId')
     const edit_name = document.getElementById('name-edit-input')
@@ -45,7 +32,7 @@ function openEditModal(productId,name,measureUnit, shelfLife, basicPrice ) {
 
     edit_productId.value = productId
     edit_name.value = name
-    edit_measureUnit.value = measureUnit
+    edit_measureUnit.value = measureUnit.option
     edit_shelfLife.value = shelfLife
     edit_basicPrice.value = basicPrice
 }

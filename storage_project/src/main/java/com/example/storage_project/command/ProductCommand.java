@@ -1,12 +1,8 @@
 package com.example.storage_project.command;
 
-import com.example.storage_project.Contractors;
-import com.example.storage_project.MeasureUnit;
-import com.example.storage_project.Product;
+import com.example.storage_project.model.MeasureUnit;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.example.storage_project.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -23,30 +19,18 @@ import lombok.ToString;
 @ToString
 @Builder
 public class ProductCommand {
-    private Long productId;
-    private int number;
     private String name;
-    private MeasureUnit measureUnit;
+    private Long measureUnit;
     private String shelfLife;
     private double basicPrice;
 
-    public static ProductCommand productToCommand(Product product) {
-        return ProductCommand.builder()
-                .productId(product.getProductId())
+    public Product commandToProduct(ProductCommand product, MeasureUnit measureUnit) {
+        return Product.builder()
                 .name(product.getName())
-                .measureUnit(product.getMeasureUnit())
+                .measureUnit(measureUnit)
                 .shelfLife(product.getShelfLife())
                 .basicPrice(product.getBasicPrice())
                 .build();
     }
 
-    public static List<ProductCommand> productsToCommand(List<Product> products) {
-        List<ProductCommand> productCommand = new ArrayList<>();
-        for (int i = 0; i < products.size(); i++) {
-            ProductCommand command = productToCommand(products.get(i));
-            command.setNumber(i + 1);
-            productCommand.add(command);
-        }
-        return productCommand;
-    }
 }

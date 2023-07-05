@@ -1,7 +1,11 @@
 package com.example.storage_project.controller;
 
-import com.example.storage_project.Product;
+import com.example.storage_project.command.ProductCommand;
 import com.example.storage_project.command.ProductUpdateCommand;
+import com.example.storage_project.dao.MeasureUnitDao;
+import com.example.storage_project.model.MeasureUnit;
+import com.example.storage_project.model.Product;
+import com.example.storage_project.service.MeasureUnitService;
 import com.example.storage_project.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,36 +18,39 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    public ProductController(ProductService productService) {
+    private final MeasureUnitService measureUnitService;
+
+    public ProductController(ProductService productService, MeasureUnitDao measureUnitDao, MeasureUnitService measureUnitService) {
         this.productService = productService;
+        this.measureUnitService = measureUnitService;
     }
 
     @GetMapping
     public String getAllProducts(Model model) {
         List<Product> products = productService.getAllProducts();
+        List<MeasureUnit> measureUnits = measureUnitService.getAllMeasureUnits();
         model.addAttribute("products", products);
+        model.addAttribute("measureUnits", measureUnits);
         return "products";
     }
+
     @PostMapping("/save")
-    public String saveProduct(@ModelAttribute("user") Product product) {
+    public String saveProduct(@ModelAttribute("product") ProductCommand productCommand) {
+        MeasureUnit measureUnit = measureUnitService.getMeasureUnitById(productCommand.getMeasureUnit());
+        Product product = productCommand.commandToProduct(productCommand, measureUnit);
         productService.saveProduct(product);
         return "redirect:/products";
     }
 
     @GetMapping("/delete")
     public String deleteProduct(@RequestParam("id") Long id) {
-       productService.deleteProductById(id);
+        productService.deleteProductById(id);
         return "redirect:/products";
     }
+
     @PostMapping("/update")
-    public String updateUser(@ModelAttribute("product") Product product) {
-        ProductUpdateCommand command = ProductUpdateCommand.builder()
-                .name(product.getName())
-                .measureUnit(product.getMeasureUnit())
-                .shelfLife(product.getShelfLife())
-                .basicPrice(product.getBasicPrice())
-                .build();
-       productService.updateProductById(product.getProductId(), command);
+    public String updateProduct(@ModelAttribute("product") ProductUpdateCommand command) {
+        productService.updateProductById(command);
         return "redirect:/products";
     }
 }

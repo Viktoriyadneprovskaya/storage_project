@@ -29,7 +29,7 @@ public class AppConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.example.storage_project");
+        sessionFactory.setPackagesToScan("com.example.storage_project.model");
 
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;

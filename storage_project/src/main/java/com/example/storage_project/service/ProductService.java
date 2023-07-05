@@ -1,8 +1,8 @@
 package com.example.storage_project.service;
 
-import com.example.storage_project.Product;
+import com.example.storage_project.model.Product;
 import com.example.storage_project.command.ProductUpdateCommand;
-import com.example.storage_project.dao.impl.ProductDao;
+import com.example.storage_project.dao.ProductDao;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class ProductService {
     public void deleteProductById(Long id){
         productDao.deleteProductById(id);
     }
-    public void updateProductById(Long id, ProductUpdateCommand command){
-        productDao.updateProductById(id,command);
+    public void updateProductById(ProductUpdateCommand command){
+        productDao.updateProductById(command);
     }
 }

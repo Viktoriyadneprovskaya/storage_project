@@ -1,8 +1,8 @@
 package com.example.storage_project.command;
 
-import com.example.storage_project.ContractorType;
-import com.example.storage_project.Contractors;
-import com.example.storage_project.PriceType;
+import com.example.storage_project.model.ContractorType;
+import com.example.storage_project.model.Contractors;
+import com.example.storage_project.model.PriceType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -22,32 +22,16 @@ import java.util.List;
 @ToString
 @Builder
 public class ContractorCommand {
-    private Long contractorID;
-    private int number;
     private int code;
     private String contractorName;
     private String contractNumber;
-    private ContractorType contractorType;
-    private PriceType priceType;
+    private Long contractorType;
+    private Long priceType;
+    private Long country;
+    private Long city;
+    int index;
+    String street;
+    String houseNumber;
 
-    public static ContractorCommand contractorToCommand(Contractors contractor) {
-        return ContractorCommand.builder()
-                .contractorID(contractor.getContractorID())
-                .code(contractor.getCode())
-                .contractorName(contractor.getContractorName())
-                .contractNumber(contractor.getContractNumber())
-                .contractorType(contractor.getContractorType())
-                .priceType(contractor.getPriceType())
-                .build();
-    }
 
-    public static List<ContractorCommand> contractorsToCommand(List<Contractors> contractors) {
-        List<ContractorCommand> contractorsCommand = new ArrayList<>();
-        for (int i = 0; i < contractors.size(); i++) {
-            ContractorCommand command = contractorToCommand(contractors.get(i));
-            command.setNumber(i + 1);
-            contractorsCommand.add(command);
-        }
-        return contractorsCommand;
-    }
 }

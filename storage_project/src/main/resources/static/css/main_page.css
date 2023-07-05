@@ -130,3 +130,7 @@ a{
 .show{
     display: block !important;
 }
+.doc-input{
+    width: 100%;
+}
+

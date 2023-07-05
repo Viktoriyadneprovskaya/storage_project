@@ -1,6 +1,5 @@
 package com.example.storage_project.command;
 
-import com.example.storage_project.MeasureUnit;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -17,8 +16,9 @@ import lombok.ToString;
 @ToString
 @Builder
 public class ProductUpdateCommand {
+    Long productId;
     String name;
-    MeasureUnit measureUnit;
+    Long measureUnit;
     String shelfLife;
     double basicPrice;
 }

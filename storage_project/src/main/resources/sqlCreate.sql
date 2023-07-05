@@ -117,3 +117,7 @@ create table storagedb.document_details
     sum double precision,
     doc_id int references storagedb.document(id_document)
 );
+
+ALTER TABLE storagedb.employees
+    ADD COLUMN username varchar unique,
+    ADD COLUMN password varchar;

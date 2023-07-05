@@ -1,9 +1,7 @@
 package com.example.storage_project.command;
 
-import java.time.LocalDate;
-
-import com.example.storage_project.ContractorType;
-import com.example.storage_project.PriceType;
+import com.example.storage_project.model.ContractorType;
+import com.example.storage_project.model.PriceType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -20,6 +18,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class ContractorUpdateCommand {
+    Long id;
     int code;
     String contractorName;
     String contractNumber;
