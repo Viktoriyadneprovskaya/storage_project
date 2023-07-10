@@ -4,6 +4,7 @@ import com.example.storage_project.command.ContractorCommand;
 import com.example.storage_project.command.ContractorUpdateCommand;
 import com.example.storage_project.dao.ContractorsDao;
 import com.example.storage_project.model.Contractors;
+import com.example.storage_project.model.MyOrganization;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,16 +23,16 @@ public class ContractorService {
     public void saveContractor(Contractors contractor){
         contractorsDao.saveContractor(contractor);
     }
-    public void setContractorToAddress(Long id,Contractors contractor){
-        contractorsDao.setContractorToAddress(id,contractor);
-    }
     public void deleteContractorById(Long id){
         contractorsDao.deleteContractorById(id);
     }
-    public void updateContractorById(Long id, ContractorUpdateCommand command){
-        contractorsDao.updateContractorById(id, command);
+    public void updateContractorById(ContractorUpdateCommand command){
+        contractorsDao.updateContractorById(command);
     }
     public Contractors getContractorById(Long id){
        return contractorsDao.getContractorById(id);
+    }
+    public MyOrganization getMyOrganization(){
+        return contractorsDao.getMyOrganization();
     }
 }

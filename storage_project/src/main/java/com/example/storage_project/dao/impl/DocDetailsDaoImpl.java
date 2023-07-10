@@ -28,6 +28,7 @@ public class DocDetailsDaoImpl implements DocDetailsDao {
                 join fetch dd.unit
                 where dd.document.documentId = :document_id
                 """, DocumentDetails.class);
+        query.setParameter("document_id",document_id);
         List<DocumentDetails> documentDetails = query.getResultList();
         transaction.commit();
         session.close();

@@ -38,6 +38,18 @@
                     <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=1">Output documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=3">Write-off documents</a></li>
+                    <li><a class="dropdown-item" href="new_document">Create document</a></li>
+                </ul>
+            </div>
+            <div class="btn-group aline">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    CREATE DOCUMENT
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="new_document?invoice_type=2">Input document</a></li>
+                    <li><a class="dropdown-item" href="new_document?invoice_type=1">Output document</a></li>
+                    <li><a class="dropdown-item" href="new_document?invoice_type=3">Write-off document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -149,26 +161,32 @@
                     <h2 class="title">Create new product</h2>
                     <form action="products/save" method="post">
                         <div class="aline-form">
+                            <div class="edge">Enter product name
                             <input type="text" name="name" id="product-input" class="edge" placeholder="Product name"
                             <%--                     onblur="usernameValidation()" --%>
                                    required>
+                            </div>
                             <%--              <span class="error" id="error-username">Username is not valid, enter at least 4 symbols</span>--%>
-                            <form action="products" method="post">
-                                <select class="doc-input" name="measureUnit" required>
+                                <div class="edge">Enter measure unit
+                            <select class="edge" name="measureUnit" required>
                                     <c:forEach items="${measureUnits}" var="measureUnit">
                                         <option value="${measureUnit.measureUnitId}">${measureUnit.measureName}</option>
                                     </c:forEach>
                                 </select>
-                            </form>
+                                </div>
+                            <div class="edge">Enter shelf life
                             <input type="text" name="shelfLife" id="shelfLife-input" class="edge"
                                    placeholder="Shelf life"
                             <%--                     onblur="firstNameValidation()" --%>
                                    required>
+                            </div>
                             <%--              <span class="error" id="error-firstname">Firstname shouldn't be empty and should contain only characters</span>--%>
+                            <div class="edge">Enter basic price
                             <input type="number" name="basicPrice"
                                    id="basicPrice-input" class="edge" placeholder="Basic price"
                             <%--                     onblur="lastNameValidation()" --%>
                                    required>
+                            </div>
                             <%--              <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <button type="submit" class="btn btn-light edge">Save</button>
                         </div>
@@ -187,33 +205,41 @@
                         <div class="aline-form">
                             <input type="text" id="edit-productId" name="productId"
                                    value="${productId !=null ? productId : ''}" hidden>
+                            <div class="edge">Product name
                             <input type="text" name="name" id="name-edit-input"
                                    value="${name  !=null ? name : ''}" class="edge"
                                    placeholder="name"
                             <%--                           onblur="usernameValidation()"--%>
                                    required>
+                            </div>
                             <%--                    <span class="error" id="error-username">Username is not valid, enter at least 4 symbols</span>--%>
                             <%--              <span class="error ${errors['username'] != null ? 's-visible' : ''}" id="error-edit-username">Username is not valid, enter at least 4 symbols</span>--%>
-                            <select name="measureUnit" id="measureUnit-edit-input" required>
+                            <div class="edge">Measure unit
+                            <select name="measureUnit" id="measureUnit-edit-input" class="edge" required>
                                 <c:forEach items="${measureUnits}" var="measureUnit">
                                     <option value="${measureUnit.measureUnitId}">${measureUnit.measureName}</option>
                                 </c:forEach>
                             </select>
+                            </div>
                             <%--                    <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <%--              <span class="error ${errors['firstname'] != null ? 's-visible' : ''}" id="error-edit-firstname">Firstname shouldn't be empty and should contain only characters</span>--%>
+                            <div class="edge">Shelf life
                             <input type="text" name="shelfLife" id="shelfLife-edit-input"
                                    value="${shelfLife  !=null ? shelfLife : ''}" class="edge"
                                    placeholder="shelf-life"
                             <%--                           onblur="lastNameValidation()"--%>
                                    required>
+                            </div>
                             <%--                    <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <%--              <span class="error ${errors['lastname'] != null ? 's-visible' : ''}" id="error-edit-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
+                            <div class="edge">Basic price
                             <input type="text" name="basicPrice" id="basicPrice-edit-input"
                                    value="${basicPrice  !=null ? basicPrice : ''}"
                                    class="edge"
                                    placeholder="BasicPrice"
                             <%--                           onblur="emailValidation()"--%>
                                    required>
+                            </div>
                             <%--                    <span class="error" id="error-email">Enter correct email</span>--%>
                             <button type="submit" class="edge">Update</button>
                         </div>

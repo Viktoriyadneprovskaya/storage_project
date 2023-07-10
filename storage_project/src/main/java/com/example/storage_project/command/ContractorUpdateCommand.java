@@ -18,10 +18,10 @@ import lombok.ToString;
 @ToString
 @Builder
 public class ContractorUpdateCommand {
-    Long id;
+    Long contractorId;
     int code;
     String contractorName;
     String contractNumber;
-    ContractorType contractorType;
-    PriceType priceType;
+    Long contractorType;
+    Long priceType;
 }

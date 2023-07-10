@@ -34,6 +34,18 @@
                     <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=1">Output documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=3">Write-off documents</a></li>
+                    <li><a class="dropdown-item" href="new_document">Create document</a></li>
+                </ul>
+            </div>
+            <div class="btn-group aline">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    CREATE DOCUMENT
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="new_document?invoice_type=2">Input document</a></li>
+                    <li><a class="dropdown-item" href="new_document?invoice_type=1">Output document</a></li>
+                    <li><a class="dropdown-item" href="new_document?invoice_type=3">Write-off document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -140,47 +152,6 @@
                 </tbody>
             </table>
 
-            <%--create start--%>
-            <%--            <div class="modal" id="modal">--%>
-            <%--                <div class="modal-form">--%>
-            <%--                    <span class="close" id="modal-close">&times</span>--%>
-            <%--                    <h2 class="title">Create new contractor</h2>--%>
-            <%--                    <form action="contractors/save" method="post">--%>
-            <%--                        <div class="aline-form">--%>
-            <%--                            <input type="text" name="name" id="contractorName-input" class="edge" placeholder="Contractor name"--%>
-            <%--                            &lt;%&ndash;                     onblur="usernameValidation()" &ndash;%&gt;--%>
-            <%--                                   required>--%>
-            <%--                            &lt;%&ndash;              <span class="error" id="error-username">Username is not valid, enter at least 4 symbols</span>&ndash;%&gt;--%>
-            <%--                            <input type="text" name="code" id="code-input" class="edge"--%>
-            <%--                                   placeholder="Code"--%>
-            <%--                            &lt;%&ndash;                     onblur="passwordValidation()" &ndash;%&gt;--%>
-            <%--                                   required>--%>
-            <%--                            &lt;%&ndash;              <span class="error" id="error-password">Password</span>&ndash;%&gt;--%>
-            <%--                            <input type="text" name="contractNumber" id="contractNumber-input" class="edge"--%>
-            <%--                                   placeholder="Contract number"--%>
-            <%--                            &lt;%&ndash;                     onblur="firstNameValidation()" &ndash;%&gt;--%>
-            <%--                                   required>--%>
-            <%--                            &lt;%&ndash;              <span class="error" id="error-firstname">Firstname shouldn't be empty and should contain only characters</span>&ndash;%&gt;--%>
-            <%--&lt;%&ndash;                            должен подтягиваться автоматом,подумать как сделать&ndash;%&gt;--%>
-            <%--                            <input type="text" name="contractorType"--%>
-            <%--                                   id="contractorType-input" class="edge" value="1"--%>
-            <%--                            &lt;%&ndash;                     onblur="lastNameValidation()" &ndash;%&gt;--%>
-            <%--                                   required>--%>
-            <%--                            &lt;%&ndash;              <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>&ndash;%&gt;--%>
-            <%--&lt;%&ndash;                            это не нужно, должно подтягиваться автоматом&ndash;%&gt;--%>
-            <%--                            <input type="text" name="priceType"--%>
-            <%--                                   id="priceType-input" class="edge"--%>
-            <%--                            &lt;%&ndash;                     onblur="lastNameValidation()" &ndash;%&gt;--%>
-            <%--                                   required>--%>
-            <%--                            &lt;%&ndash;              <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>&ndash;%&gt;--%>
-            <%--                            <button type="submit" class="btn btn-light edge">Save</button>--%>
-            <%--                        </div>--%>
-            <%--                    </form>--%>
-            <%--                </div>--%>
-            <%--            </div>--%>
-            <%--            &lt;%&ndash;      create end&ndash;%&gt;--%>
-
-
             <%--edit start--%>
             <div class="modal" id="edit-modal">
                 <div class="modal-form">
@@ -192,40 +163,46 @@
                                    value="${contractorId !=null ? contractorId : ''}" hidden>
                             <%--                    <span class="error" id="error-username">Username is not valid, enter at least 4 symbols</span>--%>
                             <%--              <span class="error ${errors['username'] != null ? 's-visible' : ''}" id="error-edit-username">Username is not valid, enter at least 4 symbols</span>--%>
+                            <div class="edge">Code
                             <input type="text" name="code" id="code-edit-input"
                                    value="${code !=null ? code : ''}" class="edge"
                                    placeholder="code"
                             <%--                           onblur="firstNameValidation()"--%>
                                    required>
+                            </div>
+                            <div class="edge">Contractor name
                             <input type="text" name="name" id="contractorName-edit-input"
                                    value="${contractorName  !=null ? contractorName : ''}" class="edge"
                                    placeholder="name"
                             <%--                           onblur="usernameValidation()"--%>
                                    required>
+                            </div>
                             <%--                    <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <%--              <span class="error ${errors['firstname'] != null ? 's-visible' : ''}" id="error-edit-firstname">Firstname shouldn't be empty and should contain only characters</span>--%>
+                            <div class="edge">Contract number
                             <input type="text" name="contractNumber" id="contractNumber-edit-input"
                                    value="${contractNumber  !=null ? contractNumber : ''}" class="edge"
                                    placeholder="contract number"
                             <%--                           onblur="lastNameValidation()"--%>
                                    required>
+                            </div>
                             <%--                    <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <%--              <span class="error ${errors['lastname'] != null ? 's-visible' : ''}" id="error-edit-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
-                            <input type="text" name="contractorType"
-                                   id="contractorType-edit-input"
-                                   value="${contractorType.contractorType  !=null ? contractorType.contractorType : ''}"
-                                   class="edge"
-                                   placeholder="Contractor type"
-                            <%--                           onblur="emailValidation()"--%>
-                                   required>
+                            <div class="edge">Contractor type
+                            <select name="contractorType" id="contractorType-edit-input"  class="edge" required>
+                                <C:forEach items="${contractorTypes}" var="contractorType">
+                                    <option value="${contractorType.contractorTypeID}">${contractorType.contractorType}</option>
+                                </C:forEach>
+                            </select>
+                            </div>
                             <%--                    <span class="error" id="error-email">Enter correct email</span>--%>
-                            <input type="text" name="priceType"
-                                   id="priceType-edit-input"
-                                   value="${priceType.priceType  !=null ? priceType.priceType : ''}"
-                                   class="edge"
-                                   placeholder="Price type"
-                            <%--                           onblur="emailValidation()"--%>
-                                   required>
+                            <div class="edge">Price type
+                            <select name="priceTypes" id="priceType-edit-input" class="edge" required>
+                                <C:forEach items="${priceTypes}" var="priceType">
+                                    <option value="${priceType.priceTypeId}">${priceType.priceType}</option>
+                                </C:forEach>
+                            </select>
+                            </div>
                             <%--                    <span class="error" id="error-email">Enter correct email</span>--%>
                             <button type="submit" class="edge">Update</button>
                         </div>

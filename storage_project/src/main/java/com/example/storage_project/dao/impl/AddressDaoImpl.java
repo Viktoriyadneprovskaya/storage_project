@@ -40,7 +40,12 @@ public class AddressDaoImpl implements AddressDao {
 
     @Override
     public void deleteAddressById(Long id) {
-
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Address address = session.get(Address.class, id);
+        session.remove(address);
+        transaction.commit();
+        session.close();
     }
 
     @Override

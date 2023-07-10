@@ -4,6 +4,8 @@ import com.example.storage_project.model.*;
 import com.example.storage_project.command.ContractorUpdateCommand;
 import com.example.storage_project.dao.ContractorsDao;
 import com.example.storage_project.service.AddressService;
+import com.example.storage_project.service.ContractorTypeService;
+import com.example.storage_project.service.PriceTypeService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,10 +17,14 @@ import java.util.List;
 public class ContractorsDaoImpl implements ContractorsDao {
     private final SessionFactory sessionFactory;
     private final AddressService addressService;
+    private final ContractorTypeService contractorTypeService;
+    private final PriceTypeService priceTypeService;
 
-    public ContractorsDaoImpl(SessionFactory sessionFactory, AddressService addressService) {
+    public ContractorsDaoImpl(SessionFactory sessionFactory, AddressService addressService, ContractorTypeService contractorTypeService, PriceTypeService priceTypeService) {
         this.sessionFactory = sessionFactory;
         this.addressService = addressService;
+        this.contractorTypeService = contractorTypeService;
+        this.priceTypeService = priceTypeService;
     }
     @Override
     public List<Contractors> getAllContractors(Long contrTypeId) {
@@ -41,11 +47,6 @@ public class ContractorsDaoImpl implements ContractorsDao {
         transaction.commit();
         session.close();
     }
-    @Override
-    public void setContractorToAddress(Long id,Contractors contractor){
-//        Address address = addressService.getAddressById(id);
-
-    }
 
     @Override
     public void deleteContractorById(Long id) {
@@ -58,15 +59,17 @@ public class ContractorsDaoImpl implements ContractorsDao {
     }
 
     @Override
-    public void updateContractorById(Long id, ContractorUpdateCommand command) {
+    public void updateContractorById(ContractorUpdateCommand command) {
+        ContractorType contractorType = contractorTypeService.getContractorTypeById(command.getContractorType());
+        PriceType priceType = priceTypeService.getPriceTypeById(command.getPriceType());
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Contractors contractor = session.get(Contractors.class, id);
+        Contractors contractor = session.get(Contractors.class, command.getContractorId());
         contractor.setCode(command.getCode());
         contractor.setContractorName(command.getContractorName());
         contractor.setContractNumber(command.getContractNumber());
-        contractor.setContractorType(command.getContractorType());
-        contractor.setPriceType(command.getPriceType());
+        contractor.setContractorType(contractorType);
+        contractor.setPriceType(priceType);
         transaction.commit();
         session.close();
     }
@@ -79,5 +82,15 @@ public class ContractorsDaoImpl implements ContractorsDao {
         transaction.commit();
         session.close();
         return contractor;
+    }
+
+    @Override
+    public MyOrganization getMyOrganization() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        MyOrganization myOrganization = session.get(MyOrganization.class,1L);
+        transaction.commit();
+        session.close();
+        return myOrganization;
     }
 }

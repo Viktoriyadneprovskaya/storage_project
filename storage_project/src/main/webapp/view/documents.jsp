@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Products</title>
+    <title>Documents</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -19,10 +19,9 @@
     <div class="block_left">
         <div class="logo">
             <img src="/pictures/logo.jpg">
-            <a href="#">STORAGE</a>
+            <a href="products">STORAGE</a>
         </div>
         <div class="menu-style">
-            <!--    <div class="menu">-->
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
                     <a href="products">PRODUCTS</a>
@@ -38,6 +37,17 @@
                     <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=1">Output documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=3">Write-off documents</a></li>
+                </ul>
+            </div>
+            <div class="btn-group aline">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    CREATE DOCUMENT
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="new_document?invoice_type=2">Input document</a></li>
+                    <li><a class="dropdown-item" href="new_document?invoice_type=1">Output document</a></li>
+                    <li><a class="dropdown-item" href="new_document?invoice_type=3">Write-off document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -118,7 +128,7 @@
                 <C:forEach items="${documents}" var="document">
                     <tr>
                         <td>${document.documentId}</td>
-                        <td><a href="documents/${document.documentId}">${document.contractor.contractorName} ${document.contractor.contractNumber}</a></td>
+                        <td><a href="entire_document/${document.documentId}">${document.contractor.contractorName} ${document.contractor.contractNumber}</a></td>
                         <td>${document.creationDate}</td>
 <%--                        <td>${document.}</td>--%>
                     </tr>

@@ -26,12 +26,22 @@
 }
 .line{
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: max(50px) repeat(3,1fr);
     border: 2px solid black;
     margin-top: 50px;
     margin-left: 10px;
 }
-.line > span{
+.line > div{
     padding: 8px 4px;
     border: 1px solid black;
+}
+.sum{
+    float: right;
+    font-size: x-large;
+}
+.dinamic-line{
+    display: grid;
+    grid-template-columns: max(50px) repeat(3,1fr);
+    border: 2px solid black;
+    margin-left: 10px;
 }

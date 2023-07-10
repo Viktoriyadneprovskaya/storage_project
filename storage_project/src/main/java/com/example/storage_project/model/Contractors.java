@@ -40,10 +40,10 @@ public class Contractors {
     String contractorName;
     @Column(name = "contract_number")
     String contractNumber;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "contractortype_id")
     ContractorType contractorType;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "price_type_id")
     PriceType priceType;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "contractor")

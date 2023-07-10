@@ -32,6 +32,18 @@
                     <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=1">Output documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=3">Write-off documents</a></li>
+                    <li><a class="dropdown-item" href="new_document">Create document</a></li>
+                </ul>
+            </div>
+            <div class="btn-group aline">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    CREATE DOCUMENT
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="new_document?invoice_type=2">Input document</a></li>
+                    <li><a class="dropdown-item" href="new_document?invoice_type=1">Output document</a></li>
+                    <li><a class="dropdown-item" href="new_document?invoice_type=3">Write-off document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -133,38 +145,40 @@
             <div class="modal" id="modal">
                 <div class="modal-form">
                     <span class="close" id="modal-close">&times</span>
-                    <h2 class="title">Create new product</h2>
+                    <h2 class="title">Create new employee</h2>
                     <form action="employees/save" method="post">
                         <div class="aline-form">
                             <div class="aline-form">
-                                <span>Username</span>
+                                <div class="edge"> Enter username
                                 <input type="text" name="username" id="username-input" class="edge"
                                 <%--                     onblur="usernameValidation()" --%>
                                        required>
-                                <div class="aline-form">
-                                    <span>Password</span>
+                                </div>
+                                    <div class="edge">Enter password
                                     <input type="text" name="password" id="password-input" class="edge"
                                     <%--                     onblur="usernameValidation()" --%>
                                            required>
-                            <span>Firstname</span>
+                                    </div>
+                            <div class="edge">Enter firstname
                             <input type="text" name="firstName" id="firstName-input" class="edge"
                             <%--                     onblur="usernameValidation()" --%>
                                    required>
+                            </div>
                             <%--              <span class="error" id="error-username">Username is not valid, enter at least 4 symbols</span>--%>
-                            <span>Lastname</span>
+                            <div class="edge">Enter lastname
                             <input type="text" name="lastName" id="lastName-input" class="edge"
                                    placeholder="Lastname"
                             <%--                     onblur="passwordValidation()" --%>
                                    required>
+                            </div>
                             <%--              <span class="error" id="error-password">Password</span>--%>
-                            <span>Job title</span>
-                                    <form action="employees" method="post">
-                                        <select name="jobTitle" required>
+                            <div class="edge">Enter job title
+                                        <select name="jobTitle"  class="edge" required>
                                             <c:forEach items="${jobTitles}" var="jobTitle">
                                                 <option value="${jobTitle.id}">${jobTitle.name}</option>
                                             </c:forEach>
                                         </select>
-                                    </form>
+                            </div>
                             <%--              <span class="error" id="error-firstname">Firstname shouldn't be empty and should contain only characters</span>--%>
                             <button type="submit" class="btn btn-light edge">Save</button>
                         </div>
@@ -183,30 +197,38 @@
                         <div class="aline-form">
                             <input type="text" id="edit-id" name="id"
                                    value="${id !=null ? id : ''}" hidden>
-                           Username <input type="text" name="username" id="username-edit-input"
+                            <div class="edge">Username
+                                <input type="text" name="username" id="username-edit-input"
                                    value="${username  !=null ? username : ''}" class="edge"
                                    placeholder="Username"
                             <%--                           onblur="usernameValidation()"--%>
                                    required>
+                            </div>
+                            <div class="edge">Firstname
                             <input type="text" name="firstName" id="firstName-edit-input"
                                    value="${firstName  !=null ? firstName : ''}" class="edge"
                                    placeholder="First name"
                             <%--                           onblur="usernameValidation()"--%>
                                    required>
+                            </div>
                             <%--                    <span class="error" id="error-username">Username is not valid, enter at least 4 symbols</span>--%>
                             <%--              <span class="error ${errors['username'] != null ? 's-visible' : ''}" id="error-edit-username">Username is not valid, enter at least 4 symbols</span>--%>
+                            <div class="edge">Lastname
                             <input type="text" name="lastName" id="lastName-edit-input"
                                    value="${lastName !=null ? lastName : ''}" class="edge"
                                    placeholder="Last name"
                             <%--                           onblur="firstNameValidation()"--%>
                                    required>
+                            </div>
                             <%--                    <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <%--              <span class="error ${errors['firstname'] != null ? 's-visible' : ''}" id="error-edit-firstname">Firstname shouldn't be empty and should contain only characters</span>--%>
-                            <select class="aline-form" name="jobTitle" id="jobTitle-edit-input" required>
+                            <div class="edge">Job title
+                            <select class="edge" name="jobTitle" id="jobTitle-edit-input" required>
                                 <c:forEach items="${jobTitles}" var="jobTitle">
                                     <option value="${jobTitle.id}">${jobTitle.name}</option>
                                 </c:forEach>
                             </select>
+                            </div>
                             <%--                    <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <%--              <span class="error ${errors['lastname'] != null ? 's-visible' : ''}" id="error-edit-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <button type="submit" class="edge">Update</button>

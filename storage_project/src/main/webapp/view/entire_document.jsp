@@ -2,7 +2,7 @@
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Input document</title>
+    <title>Document info</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -15,12 +15,12 @@
     <div class="block_left">
         <div class="logo">
             <img src="pictures/logo.jpg">
-            <a href="#">STORAGE</a>
+            <a href="products">STORAGE</a>
         </div>
         <div class="menu-style">
             <!--    <div class="menu">-->
             <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg" type="button">
+                <button class="btn btn-secondary btn-lg strech" type="button">
                     <a href="products">PRODUCTS</a>
                 </button>
 
@@ -33,6 +33,18 @@
                     <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=1">Output documents</a></li>
                     <li><a class="dropdown-item" href="documents?invoice_type=3">Write-off documents</a></li>
+                    <li><a class="dropdown-item" href="new_document">Create document</a></li>
+                </ul>
+            </div>
+            <div class="btn-group aline">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    CREATE DOCUMENT
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/new_document?invoice_type=2">Input document</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/new_document?invoice_type=1">Output document</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/new_document?invoice_type=3">Write-off document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -56,7 +68,7 @@
                 </ul>
             </div>
             <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg" type="button">
+                <button class="btn btn-secondary btn-lg strech" type="button">
                     <a href="employees">EMPLOYEES</a>
                 </button>
             </div>
@@ -95,20 +107,23 @@
                 </form>
             </div>
             <div class="document-title">
-                <h2>Output document #id from data</h2>
+                <h2>${document.invoiceType.invoiceType.toUpperCase()} document #${document.documentId} from ${document.creationDate}</h2>
             </div>
             <div class="grid-container">
-                <div>Supplier:</div>
-                <div></div>
-                <div>Customer:</div>
-                <div>${document.myOrganization.name}</div>
-                <div>Contract number:</div>
+                <div>${document.contractor.contractorType.contractorType.toUpperCase()}</div>
                 <div>${document.contractor.contractorName}</div>
-                <div>Address:</div>
+                <div>MY ORGANIZATION:</div>
+                <div>${document.myOrganization.name}</div>
+                <div>CONTRACT NUMBER:</div>
+                <div>${document.contractor.contractNumber}</div>
+                <div>MY ORGANIZATION ADDRESS:</div>
                 <div>${document.myOrganization.address}</div>
             </div>
 
             <div class="line">
+                <div>
+                    <strong>#</strong>
+                </div>
                 <div>
                     <strong>Product name</strong>
                 </div>
@@ -119,10 +134,10 @@
                     <strong>Quantity</strong>
                 </div>
                 <div>
-                    <strong>Price, grn/kg</strong>
+                    <strong>Price, hrn/kg</strong>
                 </div>
                 <div>
-                    <strong>Sum</strong>
+                    <strong>Sum, hrn</strong>
                 </div>
             <C:forEach items="${doc_details}" var="doc_detail">
                 <div>1</div>
@@ -133,7 +148,7 @@
                 <div>${doc_detail.sum}</div>
             </C:forEach>
             </div>
-
+            <div class="sum">Total sum: ${sum}hrn</div>
         </div>
     </div>
 </div>

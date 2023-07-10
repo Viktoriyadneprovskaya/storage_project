@@ -29,3 +29,8 @@ where doc_id = 1;
 
 select * from storagedb.contractor_type
 where contractor_type.contractor_type =1;
+
+select * from storagedb.document_details
+left join storagedb.document d on d.id_document = document_details.doc_id
+left join storagedb.measure_unit mu on mu.id_measure_unit = document_details.unit_id
+where doc_id = 1;

@@ -8,10 +8,7 @@ import com.example.storage_project.service.ContractorTypeService;
 import com.example.storage_project.service.PriceTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,12 +30,12 @@ public class NewContractorController {
     @GetMapping
     public String getNewContractorPage(Model model) {
         List<ContractorType> contractorTypes = contractorTypeService.getAllContractorTypes();
-        List<PriceType> priceTypes =priceTypeService.getAllPriceTypes();
+        List<PriceType> priceTypes = priceTypeService.getAllPriceTypes();
         List<Country> countries = addressService.getAllCountries();
         List<City> cities = addressService.getAllCities();
         model.addAttribute("contractorTypes", contractorTypes);
         model.addAttribute("priceTypes", priceTypes);
-        model.addAttribute("cities",cities);
+        model.addAttribute("cities", cities);
         model.addAttribute("countries", countries);
         return "new_contractor";
     }
@@ -49,27 +46,25 @@ public class NewContractorController {
         PriceType priceType = priceTypeService.getPriceTypeById(command.getPriceType());
         Country country = addressService.getCountryById(command.getCountry());
         City city = addressService.getCityById(command.getCity());
-        Address address = Address.builder()
-                .index(command.getIndex())
-                .street(command.getStreet())
-                .houseNumber(command.getHouseNumber())
-                .country(country)
-                .city(city)
-                .build();
-        addressService.saveAddress(address);//как сюда добавить id контрактора если его нет?
-        List<Address> addresses = List.of(address);
-
         Contractors contractor = Contractors.builder()
                 .code(command.getCode())
                 .contractorName(command.getContractorName())
                 .contractNumber(command.getContractNumber())
                 .contractorType(contractorType)
                 .priceType(priceType)
-                .addresses(addresses)
                 .build();
+        contractorService.saveContractor(contractor);
+        Address address = Address.builder()
+                .index(command.getIndex())
+                .street(command.getStreet())
+                .houseNumber(command.getHouseNumber())
+                .country(country)
+                .city(city)
+                .contractor(contractor)
+                .build();
+        addressService.saveAddress(address);
 
-//        contractorService.setContractorToAddress(contractorService.saveContractor(contractor);
-
-        return "redirect:/contractors?contrTypeId="+contractor.getContractorType().getContractorTypeID();
+        return "redirect:/contractors?contrTypeId=" + contractor.getContractorType().getContractorTypeID();
     }
+
 }

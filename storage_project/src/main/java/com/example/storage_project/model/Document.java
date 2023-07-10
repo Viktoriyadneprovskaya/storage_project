@@ -37,7 +37,7 @@ public class Document {
     @Column(name = "creation_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate creationDate;
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "contractor")
     Contractors contractor;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,10 +46,10 @@ public class Document {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "price_type")
     PriceType priceType;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "my_organization_id")
     MyOrganization myOrganization;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "invoice_type")
     InvoiceType invoiceType;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "document")
