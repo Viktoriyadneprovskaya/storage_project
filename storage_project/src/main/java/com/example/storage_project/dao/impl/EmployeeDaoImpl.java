@@ -1,4 +1,5 @@
 package com.example.storage_project.dao.impl;
+import com.example.storage_project.model.Contractors;
 import com.example.storage_project.model.Employee;
 import com.example.storage_project.command.EmployeeUpdateCommand;
 import com.example.storage_project.dao.EmployeeDao;
@@ -8,10 +9,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao {
     private final SessionFactory sessionFactory;
@@ -68,5 +72,28 @@ public class EmployeeDaoImpl implements EmployeeDao {
         transaction.commit();
         session.close();
     }
+
+    @Override
+    public Optional<Employee> findEmployeeByUsername(String username) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction=session.beginTransaction();
+        Query<Employee> query = session.createNamedQuery("Employee.findEmployeeByUserName", Employee.class);
+        query.setParameter("username",username);
+        Optional<Employee> employee = query.uniqueResultOptional();
+        transaction.commit();
+        session.close();
+        return employee;
+    }
+
+    @Override
+    public Employee getEmployeeById(Long id) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Employee employee = session.get(Employee.class, id);
+        transaction.commit();
+        session.close();
+        return employee;
+    }
+
 
 }

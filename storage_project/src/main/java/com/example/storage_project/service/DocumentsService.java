@@ -2,6 +2,7 @@ package com.example.storage_project.service;
 
 import com.example.storage_project.dao.DocumentsDao;
 import com.example.storage_project.model.Document;
+import com.example.storage_project.model.DocumentDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,5 +20,11 @@ public class DocumentsService {
     }
     public Document getDocumentById(Long docId){
         return documentsDao.getDocumentById(docId);
+    }
+    public void saveDocument(Document document) {
+        documentsDao.saveDocument(document);
+    }
+    public void deleteDocumentById(Long id) {
+        documentsDao.deleteDocumentById(id);
     }
 }

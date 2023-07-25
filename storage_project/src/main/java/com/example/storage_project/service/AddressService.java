@@ -1,6 +1,6 @@
 package com.example.storage_project.service;
 
-import com.example.storage_project.command.AddressUpdateCommand;
+import com.example.storage_project.command.ContractorUpdateCommand;
 import com.example.storage_project.dao.AddressDao;
 import com.example.storage_project.model.Address;
 import com.example.storage_project.model.City;
@@ -22,12 +22,12 @@ public class AddressService {
     public void deleteAddressById(Long id){
         addressDao.deleteAddressById(id);
     }
-    public void updateAddressById(Long id, AddressUpdateCommand command){
+    public void updateAddressById(Long id, ContractorUpdateCommand command){
         addressDao.updateAddressById(id,command);
     }
-    public List<Address> findAddressesByContractorId(Long id){
-        List<Address> addresses=addressDao.findAddressesByContractorId(id);
-        return addresses;
+    public Address findAddressByContractorId(Long id){
+        Address address=addressDao.findAddressByContractorId(id);
+        return address;
     }
     public Address getAddressById(Long id) {
         return addressDao.getAddressById(id);

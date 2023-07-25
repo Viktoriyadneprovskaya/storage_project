@@ -1,8 +1,11 @@
 package com.example.storage_project.service;
 
+import com.example.storage_project.model.ContractorType;
 import com.example.storage_project.model.Product;
 import com.example.storage_project.command.ProductUpdateCommand;
 import com.example.storage_project.dao.ProductDao;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +20,10 @@ public class ProductService {
         List<Product> products = productDao.getAllProducts();
         return products;
     }
+    public Product getProductById(Long id){
+        return productDao.getProductById(id);
+    }
+
     public void saveProduct(Product product){
         productDao.saveProduct(product);
     }

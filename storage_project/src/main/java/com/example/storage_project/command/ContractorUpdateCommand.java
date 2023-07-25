@@ -24,4 +24,10 @@ public class ContractorUpdateCommand {
     String contractNumber;
     Long contractorType;
     Long priceType;
+    int index;
+    String street;
+    String houseNumber;
+    Long city;
+    Long country;
+
 }

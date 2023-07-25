@@ -35,12 +35,21 @@ public class DocumentsDaoImpl implements DocumentsDao {
 
     @Override
     public void saveDocument(Document document) {
-
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(document);
+        transaction.commit();
+        session.close();
     }
 
     @Override
     public void deleteDocumentById(Long id) {
-
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Document document = session.get(Document.class, id);
+        session.remove(document);
+        transaction.commit();
+        session.close();
     }
 
     @Override

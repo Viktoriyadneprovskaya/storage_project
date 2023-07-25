@@ -1,6 +1,8 @@
 package com.example.storage_project.service;
 
+import com.example.storage_project.command.document.DocDetailsUpdateModel;
 import com.example.storage_project.dao.DocDetailsDao;
+import com.example.storage_project.model.Contractors;
 import com.example.storage_project.model.DocumentDetails;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,14 @@ public class DocDetailsService {
 
     public List<DocumentDetails> getAllDocDetailsByDocumentId(Long docId){
         return docDetailsDao.getAllDocDetailsByDocumentId(docId);
+    }
+    public void saveDocumentDetails(DocumentDetails documentDetails) {
+        docDetailsDao.saveDocumentDetails(documentDetails);
+    }
+    public void deleteDocDetailsById(Long id) {
+        docDetailsDao.deleteDocDetailsById(id);
+    }
+    public void updateDocDetailsById(DocDetailsUpdateModel docDetailsUpdateModel, Contractors contractor, Long invoiceType){
+        docDetailsDao.updateDocDetailsById(docDetailsUpdateModel,contractor, invoiceType);
     }
 }

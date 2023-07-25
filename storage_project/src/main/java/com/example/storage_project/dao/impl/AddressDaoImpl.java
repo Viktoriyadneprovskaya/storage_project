@@ -1,6 +1,6 @@
 package com.example.storage_project.dao.impl;
 
-import com.example.storage_project.command.AddressUpdateCommand;
+import com.example.storage_project.command.ContractorUpdateCommand;
 import com.example.storage_project.dao.AddressDao;
 import com.example.storage_project.model.*;
 import org.hibernate.Session;
@@ -49,20 +49,31 @@ public class AddressDaoImpl implements AddressDao {
     }
 
     @Override
-    public void updateAddressById(Long id, AddressUpdateCommand command) {
-
+    public void updateAddressById(Long id, ContractorUpdateCommand command) {
+        Country country = getCountryById(command.getCountry());
+        City city = getCityById(command.getCity());
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Address address = session.get(Address.class, id);
+        address.setStreet(command.getStreet());
+        address.setIndex(command.getIndex());
+        address.setHouseNumber(command.getHouseNumber());
+        address.setCity(city);
+        address.setCountry(country);
+        transaction.commit();
+        session.close();
     }
 
     @Override
-    public List<Address> findAddressesByContractorId(Long id) {
+    public Address findAddressByContractorId(Long id) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Query<Address> query = session.createNamedQuery("Address.findAddressesByContractorId", Address.class);
         query.setParameter("id", id);
-        List<Address> addresses = query.getResultList();
+        Address address = query.getSingleResult();
         transaction.commit();
         session.close();
-        return addresses;
+        return address;
     }
 
     @Override

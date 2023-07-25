@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,19 +9,23 @@
   <link rel="stylesheet" href="css/storage_first.css"/>
 </head>
 <body>
+
+
 <div class="page">
   <div class="form-container">
     <h2 class="title">StorageApp</h2>
-    <form>
+    <c:if test="${param.error != null}">
+      Invalid username and password
+    </c:if>
+    <form action="login" method="POST">
       <div class="input-form">
-        <input type="text" class="input" placeholder="Enter username">
+        <input name="username" type="text" class="input" placeholder="Enter username">
       </div>
       <div class="input-form">
-        <input type="password" class="input" placeholder="Enter password">
+        <input name="password" type="password" class="input" placeholder="Enter password">
       </div>
       <div class="reg-center">
-        <button class="reg-button btn btn-success">
-          <a href="products">Log in</a></button>
+        <button class="reg-button btn btn-success" type="submit">Login</button>
       </div>
     </form>
   </div>

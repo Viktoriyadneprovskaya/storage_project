@@ -14,13 +14,13 @@
     <div class="block_left">
         <div class="logo">
             <img src="pictures/logo.jpg">
-            <a href="#">STORAGE</a>
+            <a class="logo-style" href="products">STORAGE</a>
         </div>
         <div class="menu-style">
             <!--    <div class="menu">-->
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a href="products">PRODUCTS</a>
+                    <a class="new-style" href="products">PRODUCTS</a>
                 </button>
 
             </div>
@@ -30,9 +30,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
-                    <li><a class="dropdown-item" href="documents?invoice_type=1">Output documents</a></li>
-                    <li><a class="dropdown-item" href="documents?invoice_type=3">Write-off documents</a></li>
-                    <li><a class="dropdown-item" href="new_document">Create document</a></li>
+                    <li><a class="dropdown-item" href="documents?invoice_type=1">Sales documents</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -41,19 +39,8 @@
                     CREATE DOCUMENT
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="new_document?invoice_type=2">Input document</a></li>
-                    <li><a class="dropdown-item" href="new_document?invoice_type=1">Output document</a></li>
-                    <li><a class="dropdown-item" href="new_document?invoice_type=3">Write-off document</a></li>
-                </ul>
-            </div>
-            <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    PRODUCT MOVEMENT
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">List documents</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/new_input_document?invoice_type=1">Input document</a></li>
+                    <li><a class="dropdown-item" href="/new_document?invoice_type=2">Sales document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -67,7 +54,7 @@
             </div>
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a href="employees">EMPLOYEES</a>
+                    <a class="new-style" href="employees">EMPLOYEES</a>
                 </button>
             </div>
             <div class="btn-group aline">
@@ -82,36 +69,26 @@
             </div>
         </div>
     </div>
-
-
     <div class="block_center">
         <div class="bar">
-            <div class="btn-group cntr-grp">
-                <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-
-
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-
+            <div class="info-line">
+                <div class="btn-group cntr-grp">
+                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="employee_page">Employee info</a></li>
+                    </ul>
 
             <div class="buttonStyle float-right">
                 <button type="button" class="btn btn-secondary btn-lg " id="add-btn">+ Add employee</button>
             </div>
+                </div>
+            </div>
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
+                    <th scope="col">#</th>
                     <th scope="col">Username</th>
                     <th scope="col">Full name</th>
                     <th scope="col">Job title</th>
@@ -119,15 +96,17 @@
                 </tr>
                 </thead>
                 <tbody>
+                <%int number = 1; %>
                 <c:forEach items="${employees}" var="employee">
                     <tr>
+                        <td><%=number++%></td>
                         <td>${employee.username}</td>
                         <td>${employee.lastName} ${employee.firstName}</td>
                         <td>${employee.jobTitle.name}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" class="btn btn-primary edit-btn"
-                                        onclick="openEditModal('${employee.id}','${employee.username}', '${employee.firstName}', '${employee.lastName}', '${employee.jobTitle.name}')">
+                                        onclick="openEditModal('${employee.id}','${employee.username}', '${employee.firstName}', '${employee.lastName}', '${employee.jobTitle.id}')">
                                 <i class="bi bi-pen"></i>
                                 </button>
                                 <button type="button" class="btn btn-primary delete-btn">

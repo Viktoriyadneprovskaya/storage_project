@@ -21,7 +21,6 @@
 }
 .document-title{
     display: flex;
-    padding-top: 50px;
     padding-left: 10px;
 }
 .line{
@@ -35,13 +34,59 @@
     padding: 8px 4px;
     border: 1px solid black;
 }
+.entire-line{
+    display: grid;
+    grid-template-columns: max(50px) repeat(5,1fr);
+    border: 2px solid black;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+.entire-line > div{
+    padding: 8px 4px;
+    border: 1px solid black;
+}
 .sum{
     float: right;
     font-size: x-large;
 }
-.dinamic-line{
+.dynamic-line{
     display: grid;
     grid-template-columns: max(50px) repeat(3,1fr);
+    border: 2px solid black;
+    margin-left: 10px;
+}
+.table{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.aline-button{
+    float: right;
+    background-color: #77afd0;
+}
+.main-line{
+    display: grid;
+    grid-template-columns: max(50px) repeat(4,1fr);
+    border: 2px solid black;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+.main-line > div{
+    padding: 8px 4px;
+    border: 1px solid black;
+}
+.update-line{
+    display: grid;
+    grid-template-columns: max(50px) repeat(4,1fr);
+    border: 2px solid black;
+    margin-left: 10px;
+}
+.hidden-input{
+    height: 0px;
+    visibility: hidden;
+}
+.input-update-line{
+    display: grid;
+    grid-template-columns: max(50px) repeat(5,1fr);
     border: 2px solid black;
     margin-left: 10px;
 }

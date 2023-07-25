@@ -18,6 +18,6 @@ function openEditModal(contractorId, code, contractorName, contractNumber, contr
     edit_code.value = code
     edit_contractorName.value = contractorName
     edit_contractNumber.value = contractNumber
-    edit_contractorType.value = contractorType
-    edit_priceType.value = priceType
+    // edit_contractorType.value = contractorType
+    // edit_priceType.value = priceType
 }

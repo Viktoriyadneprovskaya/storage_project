@@ -89,14 +89,13 @@ a{
     width: 100%;
     margin-bottom: 10px;
 }
-
-/*уже есть такой класс*/
 .wrapper{
     margin: 30px 30px 30px;
 }
-.buttonStyle{
-    margin: 30px 90px 30px;
-}
+/*.buttonStyle{*/
+/*    margin-top: 20px;*/
+/*    margin-left: 510px;*/
+/*}*/
 .modal{
     background-color: #c2bfbf;
     flex-direction: column;
@@ -132,5 +131,44 @@ a{
 }
 .doc-input{
     width: 100%;
+}
+.my-style{
+    color: black;
+    font-size: medium;
+}
+
+.my-style:hover{
+    color: black;
+    font-size: medium;
+}
+.new-style{
+    color: white;
+    font-size: x-large;
+}
+.new-style:hover{
+    color: white;
+    font-size: x-large;
+}
+.logo-style{
+    color: dodgerblue;
+    font-size: xx-large;
+}
+.info-line{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 80px;
+}
+.trash-style{
+    color: #77afd0;
+    font-size: medium;
+}
+.trash-style:hover{
+    color: #77afd0;
+    font-size: medium;
+}
+.group-button{
+    background-color: #94c2dc;
+
 }
 

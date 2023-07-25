@@ -14,14 +14,13 @@
 <div class="wrapper">
     <div class="block_left">
         <div class="logo">
-            <img src="pictures/logo.jpg">
-            <a href="products">STORAGE</a>
+            <img src="/pictures/logo.jpg">
+            <a class="logo-style" href="/products">STORAGE</a>
         </div>
         <div class="menu-style">
-            <!--    <div class="menu">-->
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a href="products">PRODUCTS</a>
+                    <a class="new-style" href="/products">PRODUCTS</a>
                 </button>
 
             </div>
@@ -30,10 +29,8 @@
                     DOCUMENTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
-                    <li><a class="dropdown-item" href="documents?invoice_type=1">Output documents</a></li>
-                    <li><a class="dropdown-item" href="documents?invoice_type=3">Write-off documents</a></li>
-                    <li><a class="dropdown-item" href="new_document">Create document</a></li>
+                    <li><a class="dropdown-item" href="/documents?invoice_type=2">Input documents</a></li>
+                    <li><a class="dropdown-item" href="/documents?invoice_type=1">Sales documents</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -42,19 +39,8 @@
                     CREATE DOCUMENT
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/new_document?invoice_type=2">Input document</a></li>
-                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/new_document?invoice_type=1">Output document</a></li>
-                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/new_document?invoice_type=3">Write-off document</a></li>
-                </ul>
-            </div>
-            <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    PRODUCT MOVEMENT
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">List documents</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/new_input_document?invoice_type=1">Input document</a></li>
+                    <li><a class="dropdown-item" href="/new_document?invoice_type=2">Sales document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -62,14 +48,14 @@
                     CONTRACTORS
                 </button>
                 <ul id="myDropdown" class="dropdown-menu">
-                    <li><a class="dropdown-item" href="contractors?contrTypeId=1">Suppliers</a></li>
-                    <li><a class="dropdown-item" href="contractors?contrTypeId=2">Customers</a></li>
+                    <li><a class="dropdown-item" href="/contractors?contrTypeId=1">Suppliers</a></li>
+                    <li><a class="dropdown-item" href="/contractors?contrTypeId=2">Customers</a></li>
 
                 </ul>
             </div>
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a href="employees">EMPLOYEES</a>
+                    <a class="new-style" href="/employees">EMPLOYEES</a>
                 </button>
             </div>
             <div class="btn-group aline">
@@ -86,25 +72,22 @@
     </div>
     <div class="block_center">
         <div class="bar">
-            <div class="btn-group cntr-grp">
-                <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
+            <div class="info-line">
+                <div class="btn-group cntr-grp">
+                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="employee_page">Employee info</a></li>
+                    </ul>
+                    <div class="buttonStyle float-right">
+                        <button type="button" class="btn btn-secondary"><a href="/entire_document/update?document_id=${document.documentId}">Edit document</a></button>
+                    </div>
+                    <div class="buttonStyle float-right">
+                        <button type="button" class="btn btn-secondary"><a href="/documents/delete?id=${document.documentId}">Delete document</a></button>
+                    </div>
 
-
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+            </div>
             </div>
             <div class="document-title">
                 <h2>${document.invoiceType.invoiceType.toUpperCase()} document #${document.documentId} from ${document.creationDate}</h2>
@@ -120,7 +103,7 @@
                 <div>${document.myOrganization.address}</div>
             </div>
 
-            <div class="line">
+            <div class="entire-line">
                 <div>
                     <strong>#</strong>
                 </div>
@@ -139,16 +122,18 @@
                 <div>
                     <strong>Sum, hrn</strong>
                 </div>
+                <%int number = 1; %>
             <C:forEach items="${doc_details}" var="doc_detail">
-                <div>1</div>
+                <div><%=number++%></div>
                 <div>${doc_detail.product.name}</div>
                 <div>${doc_detail.unit.measureName}</div>
-                <div>${doc_detail.product.name}</div>
+                <div>${doc_detail.quantity}</div>
                 <div>${doc_detail.price}</div>
                 <div>${doc_detail.sum}</div>
             </C:forEach>
             </div>
             <div class="sum">Total sum: ${sum}hrn</div>
+            <button type="submit" class="btn btn-light edge">PRINT</button>
         </div>
     </div>
 </div>

@@ -30,8 +30,4 @@ public class MvcConfig extends WebMvcConfigurationSupport {
         return resolver;
     }
 
-    @Bean
-    public FormattingConversionServiceFactoryBean formatter() {
-        return new FormattingConversionServiceFactoryBean();
-    }
 }

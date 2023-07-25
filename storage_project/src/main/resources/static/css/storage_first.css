@@ -37,3 +37,11 @@
     font-family: 'Montserrat', sans-serif;
     width: 100%;
 }
+.new-style{
+    color: white;
+    font-size: x-large;
+}
+.new-style:hover{
+    color: white;
+    font-size: x-large;
+}

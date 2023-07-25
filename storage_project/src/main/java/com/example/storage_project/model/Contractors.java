@@ -46,7 +46,7 @@ public class Contractors {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "price_type_id")
     PriceType priceType;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "contractor")
-    List<Address> addresses = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "contractor")
+    Address address;
 
 }

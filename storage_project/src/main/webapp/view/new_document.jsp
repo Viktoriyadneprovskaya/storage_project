@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="С" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>New document</title>
@@ -15,24 +17,23 @@
     <div class="block_left">
         <div class="logo">
             <img src="pictures/logo.jpg">
-            <a href="products">STORAGE</a>
+            <a class="logo-style" href="products">STORAGE</a>
         </div>
         <div class="menu-style">
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a href="products">PRODUCTS</a>
+                    <a class="new-style" href="products">PRODUCTS</a>
                 </button>
 
             </div>
             <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                     DOCUMENTS
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
-                    <li><a class="dropdown-item" href="documents?invoice_type=1">Output documents</a></li>
-                    <li><a class="dropdown-item" href="documents?invoice_type=3">Write-off documents</a></li>
-                    <li><a class="dropdown-item" href="new_document">Create document</a></li>
+                    <li><a class="dropdown-item" href="documents?invoice_type=1">Sales documents</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -41,23 +42,13 @@
                     CREATE DOCUMENT
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="new_document?invoice_type=2">Input document</a></li>
-                    <li><a class="dropdown-item" href="new_document?invoice_type=1">Output document</a></li>
-                    <li><a class="dropdown-item" href="new_document?invoice_type=3">Write-off document</a></li>
+                    <li><a class="dropdown-item" href="/new_input_document?invoice_type=1">Input document</a></li>
+                    <li><a class="dropdown-item" href="/new_document?invoice_type=2">Sales document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    PRODUCT MOVEMENT
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">List documents</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-            <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                     CONTRACTORS
                 </button>
                 <ul id="myDropdown" class="dropdown-menu">
@@ -68,11 +59,12 @@
             </div>
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a href="employees">EMPLOYEES</a>
+                    <a class="new-style" href="employees">EMPLOYEES</a>
                 </button>
             </div>
             <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech rep" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech rep" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
@@ -85,71 +77,73 @@
     </div>
     <div class="block_center">
         <div class="bar">
-            <div class="btn-group cntr-grp">
-                <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-
-
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+            <div class="info-line">
+                <div class="btn-group cntr-grp">
+                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="employee_page">Employee info</a></li>
+                    </ul>
+            </div>
             </div>
             <div class="document-title">
-                <h2>CREATE NEW DOCUMENT</h2>
+                <h2>CREATE NEW SALES DOCUMENT</h2>
             </div>
-            <form action="new_document/save" method="post">
+            <form:form action="new_document/save?invoice_type=2" method="post" modelAttribute="documentCommand">
+
                 <div class="grid-container">
                     <div>Contractor:</div>
                     <div>
                         <select class="doc-input" name="contractor" required>
-                            <C:forEach items="${contractors}" var="contractor">
+                            <C:forEach items="${documentCommand.contractors}" var="contractor">
                                 <option value="${contractor.contractorId}">${contractor.contractorName}</option>
                             </C:forEach>
                         </select>
                     </div>
                     <div>My organization:</div>
-                    <div>${myOrganization.name}</div>
+                    <div>${documentCommand.myOrganization.name}</div>
                     <div>My organization address:</div>
-                    <div>${myOrganization.address}</div>
+                    <div>${documentCommand.myOrganization.address}</div>
                 </div>
-                <div id="table">
+
+                <button onclick="addRow()" type="button" class="btn btn aline-button">
+                    <i class="bi bi-plus"></i></button>
                 <div class="line">
                     <div>
                         <strong>#</strong>
                     </div>
                     <div>
-                        <strong>Product name</strong>//список
+                        <strong>Product name</strong>
                     </div>
                     <div>
-                        <strong>Measure unit</strong>список
+                        <strong>Measure unit</strong>
                     </div>
                     <div>
                         <strong>Quantity</strong>
                     </div>
-<%--                    <div>--%>
-<%--                        <strong>Price, hrn/kg</strong>//надо думать--%>
-<%--                    </div>--%>
-<%--                    <div>--%>
-<%--                        <strong>Sum, hrn</strong>//формула--%>
-<%--                    </div>--%>
                 </div>
-                </div>
-                <button onclick="addRow(${products}, ${measureUnits})" type="button" class="btn btn-primary"><i class="bi bi-plus"></i></button>
-                <button type="submit" class="btn btn-light edge">CREATE</button>
-                <button type="submit" class="btn btn-light edge">CREATE AND PRINT</button>
+                <C:forEach items="${documentCommand.docDetailsRows}" var="docDetailsRow" varStatus="status">
+                <div id="table" class="table">
+                <div class="dynamic-line">
+                    ${status.count}
+                    <select class="doc-input" name="docDetailsRows[${status.index}].products" required>
+                        <C:forEach items="${docDetailsRow.products}" var="product">
+                            <option value="${product.productId}">${product.name}</option>
+                        </C:forEach>
+                    </select>
+                    <select class="doc-input" name="docDetailsRows[${status.index}].measureUnits" required>
+                        <C:forEach items="${docDetailsRow.measureUnits}" var="measureUnit">
+                            <option value="${measureUnit.measureUnitId}">${measureUnit.measureName}</option>
+                        </C:forEach>
+                    </select>
+                    <input class="doc-input input1" name="docDetailsRows[${status.index}].quantities" required>
+                    </div>
+                    </div>
+                </C:forEach>
 
-            </form>
+                <button id="submitButton" type="submit" class="btn btn-light edge">CREATE</button>
+            </form:form>
         </div>
     </div>
 </div>

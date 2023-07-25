@@ -1,4 +1,4 @@
-package com.example.storage_project.command;
+package com.example.storage_project.command.document;
 import com.example.storage_project.model.Document;
 import com.example.storage_project.model.DocumentDetails;
 import com.example.storage_project.model.MeasureUnit;
@@ -22,14 +22,7 @@ import java.util.List;
 @ToString
 @Builder
 public class DocDetailsCommand {
-    private Long id;
-    private int number;
-    private Product product;
-    private MeasureUnit unit;
-    private double quantity;
-    private double price;//метод, который получает цену с учетом прайстайп и контрактортайп
-    private double sum;
-    private Document document;
-
-
+    int productSelect;
+    int unitSelect;
+    double quantitySelect;
 }

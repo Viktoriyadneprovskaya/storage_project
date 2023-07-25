@@ -1,10 +1,7 @@
 package com.example.storage_project.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
 import javax.persistence.*;
 
 @Getter
@@ -12,7 +9,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name = "document_details", schema = "storageDB")
 public class DocumentDetails {
@@ -27,12 +25,10 @@ public class DocumentDetails {
     @JoinColumn(name = "unit_id")
     MeasureUnit unit;
     double quantity;
-    double price;//метод, который получает цену с учетом прайстайп и контрактортайп
+    double price;
     double sum;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doc_id")
     Document document;
-
-
 
 }

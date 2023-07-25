@@ -1,6 +1,7 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.dao.MeasureUnitDao;
+import com.example.storage_project.model.ContractorType;
 import com.example.storage_project.model.MeasureUnit;
 import com.example.storage_project.model.Product;
 import com.example.storage_project.command.ProductUpdateCommand;
@@ -36,6 +37,16 @@ public class ProductDaoImpl implements ProductDao {
         transaction.commit();
         session.close();
         return products;
+    }
+
+    @Override
+    public Product getProductById(Long id) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Product product = session.get(Product.class, id);
+        transaction.commit();
+        session.close();
+        return product;
     }
 
     @Override

@@ -32,7 +32,7 @@ function openEditModal(productId,name,measureUnit, shelfLife, basicPrice) {
 
     edit_productId.value = productId
     edit_name.value = name
-    edit_measureUnit.value = measureUnit.option
+    edit_measureUnit.value = measureUnit
     edit_shelfLife.value = shelfLife
     edit_basicPrice.value = basicPrice
 }

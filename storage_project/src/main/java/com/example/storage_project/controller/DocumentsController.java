@@ -32,5 +32,11 @@ public class DocumentsController {
         model.addAttribute("documents", documents);
         return "documents";
     }
+    @GetMapping("/delete")
+    public String deleteEmployee(@RequestParam("id") Long id) {
+        Long invoiceType = documentsService.getDocumentById(id).getInvoiceType().getInvoiceTypeId();
+        documentsService.deleteDocumentById(id);
+        return "redirect:/documents?invoice_type="+invoiceType;
+    }
 
     }

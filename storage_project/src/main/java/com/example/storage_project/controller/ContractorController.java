@@ -1,10 +1,7 @@
 package com.example.storage_project.controller;
 
 import com.example.storage_project.command.ContractorUpdateCommand;
-import com.example.storage_project.model.Address;
-import com.example.storage_project.model.ContractorType;
-import com.example.storage_project.model.Contractors;
-import com.example.storage_project.model.PriceType;
+import com.example.storage_project.model.*;
 import com.example.storage_project.service.AddressService;
 import com.example.storage_project.service.ContractorService;
 import com.example.storage_project.service.ContractorTypeService;
@@ -33,14 +30,13 @@ public class ContractorController {
     @GetMapping
     public String getAllContractors(Model model, @RequestParam("contrTypeId") Long contrTypeId) {
         List<Contractors> contractors = contractorService.getAllContractors(contrTypeId);
-        List<ContractorType> contractorTypes = contractorTypeService.getAllContractorTypes();
-        List<PriceType> priceTypes = priceTypeService.getAllPriceTypes();
+//        List<ContractorType> contractorTypes = contractorTypeService.getAllContractorTypes();
+//        List<PriceType> priceTypes = priceTypeService.getAllPriceTypes();
         model.addAttribute("contractors", contractors);
-        model.addAttribute("contractorTypes", contractorTypes);
-        model.addAttribute("priceTypes",priceTypes);
+//        model.addAttribute("contractorTypes", contractorTypes);
+//        model.addAttribute("priceTypes",priceTypes);
         return "contractors";
     }
-
 
     @GetMapping("/delete")
     public String deleteContractor(@RequestParam("id") Long id, @RequestParam("contrTypeId") Long contrTypeId) {
@@ -49,27 +45,27 @@ public class ContractorController {
     }
 
     @GetMapping("/{contractor_id}")
-    public String getAllAddressesByContractorId(Model model, @PathVariable Long contractor_id) {
+    public String getAFullInformationByContractorId(Model model, @PathVariable Long contractor_id) {
         Contractors contractor = contractorService.getContractorById(contractor_id);
-        List<Address> addresses = addressService.findAddressesByContractorId(contractor_id);
+        Address address = addressService.findAddressByContractorId(contractor_id);
+        List<ContractorType> contractorTypes = contractorTypeService.getAllContractorTypes();
+        List<PriceType> priceTypes = priceTypeService.getAllPriceTypes();
+        List<Country> countries = addressService.getAllCountries();
+        List<City> cities = addressService.getAllCities();
+        model.addAttribute("contractorTypes", contractorTypes);
+        model.addAttribute("priceTypes",priceTypes);
         model.addAttribute("contractor", contractor);
-        model.addAttribute("addresses", addresses);
-        return "/contractors-address";
-    }
-    @GetMapping("/delete-address")
-    public String deleteAddress(@RequestParam("id") Long id,@RequestParam("contractor_id") Long contractor_id) {
-        addressService.deleteAddressById(id);
-        return "redirect:"+contractor_id;
+        model.addAttribute("address", address);
+        model.addAttribute("countries",countries);
+        model.addAttribute("cities",cities);
+        return "entire_contractor";
     }
 
     @PostMapping("/update")
     public String updateContractor(@ModelAttribute("contractor") ContractorUpdateCommand command) {
+        Address address = addressService.findAddressByContractorId(command.getContractorId());
+        addressService.updateAddressById(address.getAddressId(), command);
         contractorService.updateContractorById(command);
-        return "redirect:/contractors?contrTypeId=" + command.getContractorType();
+        return "redirect:/contractors/"+command.getContractorId();
     }
-
-//    @PostMapping("/update-address")
-//    public String updateAddressByContractor(){
-//
-//    }
 }

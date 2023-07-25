@@ -4,11 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -18,11 +14,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
+@Builder
+@AllArgsConstructor
+//join fetch d.storageName
 @org.hibernate.annotations.NamedQueries(
         {
                 @org.hibernate.annotations.NamedQuery(
                         name = "Document.findByInvoiceTypeId",
-                        query = "from Document d join fetch d.contractor join fetch d.storageName join fetch d.priceType join fetch d.myOrganization join fetch d.invoiceType where d.invoiceType.invoiceTypeId = :invoice_type"
+                        query = "from Document d join fetch d.contractor join fetch d.priceType join fetch d.myOrganization join fetch d.invoiceType where d.invoiceType.invoiceTypeId = :invoice_type"
                 )
         }
 )
@@ -40,9 +39,9 @@ public class Document {
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "contractor")
     Contractors contractor;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "storage")
-    Storage storageName;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "storage")
+//    Storage storage;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "price_type")
     PriceType priceType;
