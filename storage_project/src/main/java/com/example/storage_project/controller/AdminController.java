@@ -1,7 +1,7 @@
 package com.example.storage_project.controller;
 
-import com.example.storage_project.command.EmployeeDTO;
-import com.example.storage_project.model.Employee;
+import com.example.storage_project.command.employee.EmployeeDTO;
+import com.example.storage_project.model.employee.Employee;
 import com.example.storage_project.service.EmployeeService;
 import com.example.storage_project.util.UserFactory;
 import org.springframework.stereotype.Controller;

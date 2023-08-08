@@ -1,9 +1,9 @@
 package com.example.storage_project.util;
 
-import com.example.storage_project.command.EmployeeDTO;
-import com.example.storage_project.model.Employee;
-import com.example.storage_project.model.Role;
-import com.example.storage_project.model.SecurityUser;
+import com.example.storage_project.command.employee.EmployeeDTO;
+import com.example.storage_project.model.employee.Employee;
+import com.example.storage_project.model.security.Role;
+import com.example.storage_project.model.security.SecurityUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

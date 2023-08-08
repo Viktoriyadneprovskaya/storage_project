@@ -1,7 +1,8 @@
 package com.example.storage_project.controller;
 
-import com.example.storage_project.command.ContractorCommand;
-import com.example.storage_project.model.*;
+import com.example.storage_project.command.contractor.ContractorCommand;
+import com.example.storage_project.model.contractor.*;
+import com.example.storage_project.model.product.PriceType;
 import com.example.storage_project.service.AddressService;
 import com.example.storage_project.service.ContractorService;
 import com.example.storage_project.service.ContractorTypeService;

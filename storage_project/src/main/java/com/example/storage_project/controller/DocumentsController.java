@@ -1,15 +1,11 @@
 package com.example.storage_project.controller;
 
-import com.example.storage_project.model.Address;
-import com.example.storage_project.model.Contractors;
-import com.example.storage_project.model.Document;
-import com.example.storage_project.model.DocumentDetails;
+import com.example.storage_project.model.document.Document;
 import com.example.storage_project.service.DocDetailsService;
 import com.example.storage_project.service.DocumentsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,11 +28,12 @@ public class DocumentsController {
         model.addAttribute("documents", documents);
         return "documents";
     }
+
     @GetMapping("/delete")
     public String deleteEmployee(@RequestParam("id") Long id) {
         Long invoiceType = documentsService.getDocumentById(id).getInvoiceType().getInvoiceTypeId();
         documentsService.deleteDocumentById(id);
-        return "redirect:/documents?invoice_type="+invoiceType;
+        return "redirect:/documents?invoice_type=" + invoiceType;
     }
 
-    }
+}

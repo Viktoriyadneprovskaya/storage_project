@@ -1,7 +1,7 @@
 package com.example.storage_project.service;
 
 import com.example.storage_project.dao.PriceTypeDao;
-import com.example.storage_project.model.PriceType;
+import com.example.storage_project.model.product.PriceType;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

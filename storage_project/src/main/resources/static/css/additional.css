@@ -15,4 +15,10 @@
 .s-visible {
     display: flex !important;
 }
+.error {
+    display: none;
+}
+.hidden {
+    display: none;
+}
 

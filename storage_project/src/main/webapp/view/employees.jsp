@@ -14,13 +14,12 @@
     <div class="block_left">
         <div class="logo">
             <img src="pictures/logo.jpg">
-            <a class="logo-style" href="products">STORAGE</a>
+            <a class="logo-style" href="/products">STORAGE</a>
         </div>
         <div class="menu-style">
-            <!--    <div class="menu">-->
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a class="new-style" href="products">PRODUCTS</a>
+                    <a class="new-style" href="/products">PRODUCTS</a>
                 </button>
 
             </div>
@@ -29,8 +28,8 @@
                     DOCUMENTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
-                    <li><a class="dropdown-item" href="documents?invoice_type=1">Sales documents</a></li>
+                    <li><a class="dropdown-item" href="/documents?invoice_type=2">Input documents</a></li>
+                    <li><a class="dropdown-item" href="/documents?invoice_type=1">Sales documents</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -48,13 +47,13 @@
                     CONTRACTORS
                 </button>
                 <ul id="myDropdown" class="dropdown-menu">
-                    <li><a class="dropdown-item" href="contractors?contrTypeId=1">Suppliers</a></li>
-                    <li><a class="dropdown-item" href="contractors?contrTypeId=2">Customers</a></li>
+                    <li><a class="dropdown-item" href="/contractors?contrTypeId=1">Suppliers</a></li>
+                    <li><a class="dropdown-item" href="/contractors?contrTypeId=2">Customers</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a class="new-style" href="employees">EMPLOYEES</a>
+                    <a class="new-style" href="/employees">EMPLOYEES</a>
                 </button>
             </div>
             <div class="btn-group aline">
@@ -62,9 +61,9 @@
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_balance">Product Balance</a></li>
+                    <li><a class="dropdown-item" href="/reports/sales_by_product">Another action</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_sales_by_contractor">Something else here</a></li>
                 </ul>
             </div>
         </div>
@@ -77,7 +76,7 @@
                         <i class="bi bi-person-circle"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="employee_page">Employee info</a></li>
+                        <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
                     </ul>
 
             <div class="buttonStyle float-right">
@@ -105,12 +104,12 @@
                         <td>${employee.jobTitle.name}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-primary edit-btn"
+                                <button type="button" class="btn edit-btn group-button"
                                         onclick="openEditModal('${employee.id}','${employee.username}', '${employee.firstName}', '${employee.lastName}', '${employee.jobTitle.id}')">
                                 <i class="bi bi-pen"></i>
                                 </button>
-                                <button type="button" class="btn btn-primary delete-btn">
-                                    <a href="employees/delete?id=${employee.id}">
+                                <button type="button" class="btn delete-btn group-button">
+                                    <a style="color: black" href="employees/delete?id=${employee.id}">
                                         <i class="bi bi-trash"></i></a>
                                 </button>
                             </div>
@@ -160,6 +159,7 @@
                             </div>
                             <%--              <span class="error" id="error-firstname">Firstname shouldn't be empty and should contain only characters</span>--%>
                             <button type="submit" class="btn btn-light edge">Save</button>
+                        </div>
                         </div>
                     </form>
                 </div>

@@ -5,6 +5,12 @@ import com.example.storage_project.command.document.DocDetailsRow;
 import com.example.storage_project.command.document.DocumentCommand;
 import com.example.storage_project.command.document.DocumentModel;
 import com.example.storage_project.model.*;
+import com.example.storage_project.model.contractor.Contractors;
+import com.example.storage_project.model.document.Document;
+import com.example.storage_project.model.document.DocumentDetails;
+import com.example.storage_project.model.document.InvoiceType;
+import com.example.storage_project.model.product.MeasureUnit;
+import com.example.storage_project.model.product.Product;
 import com.example.storage_project.service.*;
 
 import org.springframework.stereotype.Controller;
@@ -57,12 +63,11 @@ public class NewDocumentController {
     @PostMapping("/save")
     public String saveDocument(@ModelAttribute("documentCommand") DocumentModel documentModel, @RequestParam Long invoice_type) {
         Contractors contractor = contractorService.getContractorById(documentModel.getContractor());
-        LocalDate date = LocalDate.now();
         MyOrganization myOrganization = contractorService.getMyOrganization();
-        InvoiceType invoiceType = invoiceTypeService.getInvoiceTypeById(invoice_type);
+        InvoiceType invoiceType = invoiceTypeService.getInvoiceTypeById(1L);
 
         Document document = Document.builder()
-                .creationDate(date)
+                .creationDate(LocalDate.now())
                 .contractor(contractor)
                 .priceType(contractor.getPriceType())
                 .myOrganization(myOrganization)
@@ -71,10 +76,8 @@ public class NewDocumentController {
         documentsService.saveDocument(document);
         Document savedDocument = documentsService.getDocumentById(document.getDocumentId());
 
-        List<DocumentDetails> documentsDetails = new ArrayList<>();
         List<DocDetailsModel> docDetailsModels = documentModel.getDocDetailsRows();
         for (DocDetailsModel docDetailsModel : docDetailsModels) {
-
             Product product = productService.getProductById(docDetailsModel.getProducts());
             double price = product.getBasicPrice() - (product.getBasicPrice() * contractor.getPriceType().getChargePercent() / 100);
             double sum = price * docDetailsModel.getQuantities();
@@ -87,12 +90,9 @@ public class NewDocumentController {
                     .sum(sum)
                     .document(savedDocument)
                     .build();
-            documentsDetails.add(documentDetails);
-        }
-        for (DocumentDetails documentDetails : documentsDetails) {
             docDetailsService.saveDocumentDetails(documentDetails);
         }
-        return "redirect:/entire_document/"+document.getDocumentId();
+        return "redirect:/entire_document/" + document.getDocumentId();
     }
 
 }

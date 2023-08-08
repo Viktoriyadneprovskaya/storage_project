@@ -1,7 +1,7 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.dao.RoleDao;
-import com.example.storage_project.model.Role;
+import com.example.storage_project.model.security.Role;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

@@ -1,8 +1,7 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.dao.InvoiceTypeDao;
-import com.example.storage_project.model.Employee;
-import com.example.storage_project.model.InvoiceType;
+import com.example.storage_project.model.document.InvoiceType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

@@ -1,7 +1,7 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.dao.PriceTypeDao;
-import com.example.storage_project.model.PriceType;
+import com.example.storage_project.model.product.PriceType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

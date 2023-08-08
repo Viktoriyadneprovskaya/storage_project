@@ -1,7 +1,7 @@
 package com.example.storage_project.service;
 
 import com.example.storage_project.dao.InvoiceTypeDao;
-import com.example.storage_project.model.InvoiceType;
+import com.example.storage_project.model.document.InvoiceType;
 import org.springframework.stereotype.Service;
 
 @Service

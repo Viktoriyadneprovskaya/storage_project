@@ -1,6 +1,6 @@
 package com.example.storage_project.dao;
 
-import com.example.storage_project.model.ContractorType;
+import com.example.storage_project.model.contractor.ContractorType;
 
 import java.util.List;
 

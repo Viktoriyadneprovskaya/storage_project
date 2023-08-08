@@ -1,10 +1,10 @@
 package com.example.storage_project.service;
 
-import com.example.storage_project.command.ContractorUpdateCommand;
+import com.example.storage_project.command.contractor.ContractorUpdateCommand;
 import com.example.storage_project.dao.AddressDao;
-import com.example.storage_project.model.Address;
-import com.example.storage_project.model.City;
-import com.example.storage_project.model.Country;
+import com.example.storage_project.model.contractor.Address;
+import com.example.storage_project.model.contractor.City;
+import com.example.storage_project.model.contractor.Country;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,9 +18,6 @@ public class AddressService {
 
     public void saveAddress(Address address){
         addressDao.saveAddress(address);
-    }
-    public void deleteAddressById(Long id){
-        addressDao.deleteAddressById(id);
     }
     public void updateAddressById(Long id, ContractorUpdateCommand command){
         addressDao.updateAddressById(id,command);

@@ -1,7 +1,7 @@
 package com.example.storage_project.command.document;
 
-import com.example.storage_project.model.MeasureUnit;
-import com.example.storage_project.model.Product;
+import com.example.storage_project.model.product.MeasureUnit;
+import com.example.storage_project.model.product.Product;
 import lombok.*;
 @Getter
 @Setter

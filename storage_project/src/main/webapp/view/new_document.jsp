@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="С" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>New document</title>
@@ -17,12 +16,12 @@
     <div class="block_left">
         <div class="logo">
             <img src="pictures/logo.jpg">
-            <a class="logo-style" href="products">STORAGE</a>
+            <a class="logo-style" href="/products">STORAGE</a>
         </div>
         <div class="menu-style">
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a class="new-style" href="products">PRODUCTS</a>
+                    <a class="new-style" href="/products">PRODUCTS</a>
                 </button>
 
             </div>
@@ -32,8 +31,8 @@
                     DOCUMENTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="documents?invoice_type=2">Input documents</a></li>
-                    <li><a class="dropdown-item" href="documents?invoice_type=1">Sales documents</a></li>
+                    <li><a class="dropdown-item" href="/documents?invoice_type=2">Input documents</a></li>
+                    <li><a class="dropdown-item" href="/documents?invoice_type=1">Sales documents</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -52,14 +51,14 @@
                     CONTRACTORS
                 </button>
                 <ul id="myDropdown" class="dropdown-menu">
-                    <li><a class="dropdown-item" href="contractors?contrTypeId=1">Suppliers</a></li>
-                    <li><a class="dropdown-item" href="contractors?contrTypeId=2">Customers</a></li>
+                    <li><a class="dropdown-item" href="/contractors?contrTypeId=1">Suppliers</a></li>
+                    <li><a class="dropdown-item" href="/contractors?contrTypeId=2">Customers</a></li>
 
                 </ul>
             </div>
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a class="new-style" href="employees">EMPLOYEES</a>
+                    <a class="new-style" href="/employees">EMPLOYEES</a>
                 </button>
             </div>
             <div class="btn-group aline">
@@ -68,9 +67,10 @@
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_balance">Product Balance</a></li>
+                    <li><a class="dropdown-item" href="/reports/sales_by_product">Sales by products</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_sales_by_contractor">Sales by contractors</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -79,13 +79,14 @@
         <div class="bar">
             <div class="info-line">
                 <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="employee_page">Employee info</a></li>
+                        <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
                     </ul>
-            </div>
+                </div>
             </div>
             <div class="document-title">
                 <h2>CREATE NEW SALES DOCUMENT</h2>
@@ -124,21 +125,21 @@
                     </div>
                 </div>
                 <C:forEach items="${documentCommand.docDetailsRows}" var="docDetailsRow" varStatus="status">
-                <div id="table" class="table">
-                <div class="dynamic-line">
-                    ${status.count}
-                    <select class="doc-input" name="docDetailsRows[${status.index}].products" required>
-                        <C:forEach items="${docDetailsRow.products}" var="product">
-                            <option value="${product.productId}">${product.name}</option>
-                        </C:forEach>
-                    </select>
-                    <select class="doc-input" name="docDetailsRows[${status.index}].measureUnits" required>
-                        <C:forEach items="${docDetailsRow.measureUnits}" var="measureUnit">
-                            <option value="${measureUnit.measureUnitId}">${measureUnit.measureName}</option>
-                        </C:forEach>
-                    </select>
-                    <input class="doc-input input1" name="docDetailsRows[${status.index}].quantities" required>
-                    </div>
+                    <div id="table" class="table">
+                        <div class="dynamic-line">
+                                ${status.count}
+                            <select class="doc-input" name="docDetailsRows[${status.index}].products" required>
+                                <C:forEach items="${docDetailsRow.products}" var="product">
+                                    <option value="${product.productId}">${product.name}</option>
+                                </C:forEach>
+                            </select>
+                            <select class="doc-input" name="docDetailsRows[${status.index}].measureUnits" required>
+                                <C:forEach items="${docDetailsRow.measureUnits}" var="measureUnit">
+                                    <option value="${measureUnit.measureUnitId}">${measureUnit.measureName}</option>
+                                </C:forEach>
+                            </select>
+                            <input class="doc-input input1" name="docDetailsRows[${status.index}].quantities" required>
+                        </div>
                     </div>
                 </C:forEach>
 
@@ -148,7 +149,6 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/new_document.js"></script>
 </body>
 </html>

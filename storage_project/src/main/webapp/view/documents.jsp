@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -58,20 +58,23 @@
                     <li><a class="dropdown-item" href="contractors?contrTypeId=2">Customers</a></li>
                 </ul>
             </div>
-            <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a class="new-style" href="employees">EMPLOYEES</a>
-                </button>
-            </div>
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <div class="btn-group aline">
+                    <button class="btn btn-secondary btn-lg strech" type="button">
+                        <a class="new-style" href="employees">EMPLOYEES</a>
+                    </button>
+                </div>
+            </sec:authorize>
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg dropdown-toggle strech rep" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_balance">Product Balance</a></li>
+                    <li><a class="dropdown-item" href="/reports/sales_by_product">Another action</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_sales_by_contractor">Something else here</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -80,7 +83,8 @@
         <div class="bar">
             <div class="info-line">
                 <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                     </button>
                     <ul class="dropdown-menu">
@@ -94,7 +98,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Document's number</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Contractor</th>
                     <th scope="col">Date</th>
                 </tr>
                 </thead>
@@ -102,16 +106,17 @@
                 <C:forEach items="${documents}" var="document">
                     <tr>
                         <td>${document.documentId}</td>
-                        <td><a class="my-style" href="entire_document/${document.documentId}">${document.contractor.contractorName} ${document.contractor.contractNumber}</a></td>
+                        <td><a class="my-style"
+                               href="entire_document/${document.documentId}">${document.contractor.contractorName} ${document.contractor.contractNumber}</a>
+                        </td>
                         <td>${document.creationDate}</td>
-<%--                        <td>${document.}</td>--%>
                     </tr>
                 </C:forEach>
                 </tbody>
             </table>
 
+        </div>
     </div>
-</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/product.js"></script>

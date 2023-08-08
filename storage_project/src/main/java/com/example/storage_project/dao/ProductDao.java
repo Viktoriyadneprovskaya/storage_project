@@ -1,8 +1,7 @@
 package com.example.storage_project.dao;
 
-import com.example.storage_project.command.ContractorUpdateCommand;
-import com.example.storage_project.model.Product;
-import com.example.storage_project.command.ProductUpdateCommand;
+import com.example.storage_project.model.product.Product;
+import com.example.storage_project.command.product.ProductUpdateCommand;
 
 import java.util.List;
 

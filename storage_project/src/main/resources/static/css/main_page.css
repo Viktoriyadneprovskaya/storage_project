@@ -92,10 +92,6 @@ a{
 .wrapper{
     margin: 30px 30px 30px;
 }
-/*.buttonStyle{*/
-/*    margin-top: 20px;*/
-/*    margin-left: 510px;*/
-/*}*/
 .modal{
     background-color: #c2bfbf;
     flex-direction: column;
@@ -171,4 +167,17 @@ a{
     background-color: #94c2dc;
 
 }
+.title-report{
+    text-align: center;
+}
+.report-menu{
+    display: flex;
+    flex-direction: column;
+    justify-items: left;
+    width: 30%;
+    gap: 3px;
+    margin-left: 5px;
+}
+
+
 

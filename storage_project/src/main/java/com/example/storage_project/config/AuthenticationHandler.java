@@ -1,6 +1,6 @@
 package com.example.storage_project.config;
 
-import com.example.storage_project.model.SecurityUser;
+import com.example.storage_project.model.security.SecurityUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -15,7 +15,7 @@ import java.util.Collection;
 
 @Component
 public class AuthenticationHandler implements AuthenticationSuccessHandler {
-    SimpleUrlAuthenticationSuccessHandler userSuccessHandler = new SimpleUrlAuthenticationSuccessHandler("/");
+    SimpleUrlAuthenticationSuccessHandler userSuccessHandler = new SimpleUrlAuthenticationSuccessHandler("/employee_page");
     SimpleUrlAuthenticationSuccessHandler adminSuccessHandler = new SimpleUrlAuthenticationSuccessHandler("/admin");
 
 
@@ -32,7 +32,7 @@ public class AuthenticationHandler implements AuthenticationSuccessHandler {
             }
         }
 
-        userSuccessHandler.setDefaultTargetUrl("/user/"+ principal.getId() + "/" + principal.getUsername());
+        userSuccessHandler.setDefaultTargetUrl("/employee_page/"+ principal.getId() + "/" + principal.getUsername());
         this.userSuccessHandler.onAuthenticationSuccess(request,response,authentication);
     }
     }

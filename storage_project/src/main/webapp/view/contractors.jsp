@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Contractors</title>
@@ -54,40 +55,45 @@
                     <li><a class="dropdown-item" href="contractors?contrTypeId=2">Customers</a></li>
                 </ul>
             </div>
-            <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a class="new-style" href="employees">EMPLOYEES</a>
-                </button>
-            </div>
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <div class="btn-group aline">
+                    <button class="btn btn-secondary btn-lg strech" type="button">
+                        <a class="new-style" href="employees">EMPLOYEES</a>
+                    </button>
+                </div>
+            </sec:authorize>
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg dropdown-toggle strech rep" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_balance">Product balance</a></li>
+                    <li><a class="dropdown-item" href="/reports/sales_by_product">Sales by products</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_sales_by_contractor">Sales by contractors</a>
+                    </li>
                 </ul>
             </div>
-            </div>
         </div>
+    </div>
     <div class="block_center">
         <div class="bar">
             <div class="info-line">
                 <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="employee_page">Employee info</a></li>
                     </ul>
 
-
-            <div class="buttonStyle float-right">
-                <button type="button" class="btn btn-secondary btn-lg " id="add-btn"><a href="new_contractor">Add
-                    contractor</a></button>
-            </div>
+                    <sec:authorize access="hasAuthority('ADMIN')">
+                        <div class="buttonStyle float-right">
+                            <button type="button" class="btn btn-secondary btn-lg " id="add-btn"><a
+                                    href="/new_contractor">Add contractor</a></button>
+                        </div>
+                    </sec:authorize>
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -105,9 +111,11 @@
                 <%int number = 1; %>
                 <C:forEach items="${contractors}" var="contractor">
                     <tr>
-                        <td><%=number++%></td>
+                        <td><%=number++%>
+                        </td>
                         <td class="name">${contractor.code}</td>
-                        <td><a class="my-style" href="contractors/${contractor.contractorId}">${contractor.contractorName}</a></td>
+                        <td><a class="my-style"
+                               href="contractors/${contractor.contractorId}">${contractor.contractorName}</a></td>
                         <td>${contractor.contractNumber}</td>
                         <td>${contractor.contractorType.contractorType}</td>
                         <td>${contractor.priceType.priceType}</td>

@@ -1,10 +1,7 @@
 package com.example.storage_project.dao.impl;
 
-import com.example.storage_project.command.ContractorUpdateCommand;
 import com.example.storage_project.dao.DocumentsDao;
-import com.example.storage_project.model.Contractors;
-import com.example.storage_project.model.Document;
-import com.example.storage_project.model.DocumentDetails;
+import com.example.storage_project.model.document.Document;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

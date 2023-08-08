@@ -1,7 +1,7 @@
 package com.example.storage_project.service;
 
 import com.example.storage_project.dao.JobTitleDao;
-import com.example.storage_project.model.JobTitle;
+import com.example.storage_project.model.employee.JobTitle;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
