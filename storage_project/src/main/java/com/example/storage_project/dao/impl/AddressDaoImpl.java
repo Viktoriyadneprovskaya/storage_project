@@ -1,8 +1,10 @@
 package com.example.storage_project.dao.impl;
 
-import com.example.storage_project.command.ContractorUpdateCommand;
+import com.example.storage_project.command.contractor.ContractorUpdateCommand;
 import com.example.storage_project.dao.AddressDao;
-import com.example.storage_project.model.*;
+import com.example.storage_project.model.contractor.Address;
+import com.example.storage_project.model.contractor.City;
+import com.example.storage_project.model.contractor.Country;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

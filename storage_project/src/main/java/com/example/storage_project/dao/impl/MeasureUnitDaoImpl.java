@@ -1,7 +1,7 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.dao.MeasureUnitDao;
-import com.example.storage_project.model.MeasureUnit;
+import com.example.storage_project.model.product.MeasureUnit;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -9,7 +9,6 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class MeasureUnitDaoImpl implements MeasureUnitDao {

@@ -1,6 +1,6 @@
 package com.example.storage_project.command.document;
 
-import com.example.storage_project.model.Contractors;
+import com.example.storage_project.model.contractor.Contractors;
 import com.example.storage_project.model.MyOrganization;
 import lombok.*;
 

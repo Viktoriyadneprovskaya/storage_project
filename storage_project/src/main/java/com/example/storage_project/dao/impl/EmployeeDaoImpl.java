@@ -1,15 +1,13 @@
 package com.example.storage_project.dao.impl;
-import com.example.storage_project.model.Contractors;
-import com.example.storage_project.model.Employee;
-import com.example.storage_project.command.EmployeeUpdateCommand;
+import com.example.storage_project.model.employee.Employee;
+import com.example.storage_project.command.employee.EmployeeUpdateCommand;
 import com.example.storage_project.dao.EmployeeDao;
-import com.example.storage_project.model.JobTitle;
+import com.example.storage_project.model.employee.JobTitle;
 import com.example.storage_project.service.JobTitleService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 

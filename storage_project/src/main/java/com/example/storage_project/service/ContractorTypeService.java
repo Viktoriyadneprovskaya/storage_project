@@ -1,7 +1,7 @@
 package com.example.storage_project.service;
 
 import com.example.storage_project.dao.ContractorTypeDao;
-import com.example.storage_project.model.ContractorType;
+import com.example.storage_project.model.contractor.ContractorType;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -58,63 +59,70 @@
                     <li><a class="dropdown-item" href="/contractors?contrTypeId=2">Customers</a></li>
                 </ul>
             </div>
-            <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a class="new-style" href="/employees">EMPLOYEES</a>
-                </button>
-            </div>
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <div class="btn-group aline">
+                    <button class="btn btn-secondary btn-lg strech" type="button">
+                        <a class="new-style" href="/employees">EMPLOYEES</a>
+                    </button>
+                </div>
+            </sec:authorize>
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg dropdown-toggle strech rep" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Product balance</a></li>
-                    <li><a class="dropdown-item" href="#">Sales by products</a></li>
-                    <li><a class="dropdown-item" href="#">Sales by contractors</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_balance">Product balance</a></li>
+                    <li><a class="dropdown-item" href="/reports/sales_by_product">Sales by products</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_sales_by_contractor">Sales by contractors</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="block_center">
-        <div class="bar">
+<%--        <div class="bar">--%>
             <div class="info-line">
-            <div class="btn-group cntr-grp">
-                <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
-                </ul>
+                <div class="btn-group cntr-grp">
+                    <button type="button" class="btn btn">
+                        <i class="bi bi-person-circle"></i><a class="dropdown-item" href="/employee_page">Employee
+                        info</a>
+                    </button>
+<%--                </div>--%>
 
-
-            <div class="buttonStyle float-right">
-                <button type="button" class="btn btn-secondary btn-lg " id="add-btn">+ Add Product</button>
+                <sec:authorize access="hasAuthority('ADMIN')">
+                    <div class="buttonStyle float-right">
+                        <button type="button" class="btn btn-secondary btn-lg " id="add-btn">+ Add Product</button>
+                    </div>
+                </sec:authorize>
             </div>
-            </div>
-            </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Product name</th>
-                    <th scope="col">Measure unit</th>
-                    <th scope="col">Shelf life</th>
-                    <th scope="col">Basic price</th>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product name</th>
+                <th scope="col">Measure unit</th>
+                <th scope="col">Shelf life</th>
+                <th scope="col">Basic price</th>
+                <sec:authorize access="hasAuthority('ADMIN')">
                     <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%int number = 1; %>
-                <C:forEach items="${products}" var="product">
+                </sec:authorize>
+            </tr>
+            </thead>
+            <tbody>
+            <%int number = 1; %>
+            <C:forEach items="${products}" var="product">
 
-                    <tr>
-                        <td><%=number++%></td>
-                        <td>${product.name}</td>
-                        <td>${product.measureUnit.measureName}</td>
-                        <td>${product.shelfLife}</td>
-                        <td>${product.basicPrice}</td>
+                <tr>
+                    <td><%=number++%>
+                    </td>
+                    <td>${product.name}</td>
+                    <td>${product.measureUnit.measureName}</td>
+                    <td>${product.shelfLife}</td>
+                    <td>${product.basicPrice}</td>
+                    <sec:authorize access="hasAuthority('ADMIN')">
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" class="btn edit-btn group-button"
@@ -127,91 +135,91 @@
                                 </button>
                             </div>
                         </td>
-                    </tr>
-                </C:forEach>
-                </tbody>
-            </table>
+                    </sec:authorize>
+                </tr>
+            </C:forEach>
+            </tbody>
+        </table>
 
-            <%--create start--%>
-            <div class="modal" id="modal">
-                <div class="modal-form">
-                    <span class="close" id="modal-close">&times</span>
-                    <h2 class="title">Create new product</h2>
-                    <form action="products/save" method="post">
-                        <div class="aline-form">
-                            <div class="edge">Enter product name
+        <%--create start--%>
+        <div class="modal" id="modal">
+            <div class="modal-form">
+                <span class="close" id="modal-close">&times</span>
+                <h2 class="title">Create new product</h2>
+                <form action="products/save" method="post">
+                    <div class="aline-form">
+                        <div class="edge">Enter product name
                             <input type="text" name="name" id="product-input" class="edge" placeholder="Product name"
                                    required>
-                            </div>
-                                <div class="edge">Enter measure unit
+                        </div>
+                        <div class="edge">Enter measure unit
                             <select class="edge" name="measureUnit" required>
-                                    <c:forEach items="${measureUnits}" var="measureUnit">
-                                        <option value="${measureUnit.measureUnitId}">${measureUnit.measureName}</option>
-                                    </c:forEach>
-                                </select>
-                                </div>
-                            <div class="edge">Enter shelf life
+                                <C:forEach items="${measureUnits}" var="measureUnit">
+                                    <option value="${measureUnit.measureUnitId}">${measureUnit.measureName}</option>
+                                </C:forEach>
+                            </select>
+                        </div>
+                        <div class="edge">Enter shelf life
                             <input type="text" name="shelfLife" id="shelfLife-input" class="edge"
                                    placeholder="Shelf life"
                                    required>
-                            </div>
-                            <div class="edge">Enter basic price
+                        </div>
+                        <div class="edge">Enter basic price
                             <input type="number" name="basicPrice"
                                    id="basicPrice-input" class="edge" placeholder="Basic price"
                                    required>
-                            </div>
-                            <button type="submit" class="btn btn-light edge">Save</button>
                         </div>
-                    </form>
-                </div>
+                        <button type="submit" class="btn btn-light edge">Save</button>
+                    </div>
+                </form>
             </div>
-            <%--      create end--%>
+        </div>
+        <%--      create end--%>
 
 
-            <%--edit start--%>
-            <div class="modal" id="edit-modal">
-                <div class="modal-form">
-                    <span class="close" id="edit-modal-close">&times</span>
-                    <h2 class="title">Update existing product</h2>
-                    <form action="products/update" method="post">
-                        <div class="aline-form">
-                            <input type="text" id="edit-productId" name="productId"
-                                   value="${productId !=null ? productId : ''}" hidden>
-                            <div class="edge">Product name
+        <%--edit start--%>
+        <div class="modal" id="edit-modal">
+            <div class="modal-form">
+                <span class="close" id="edit-modal-close">&times</span>
+                <h2 class="title">Update existing product</h2>
+                <form action="products/update" method="post">
+                    <div class="aline-form">
+                        <input type="text" id="edit-productId" name="productId"
+                               value="${productId !=null ? productId : ''}" hidden>
+                        <div class="edge">Product name
                             <input type="text" name="name" id="name-edit-input"
                                    value="${name  !=null ? name : ''}" class="edge"
                                    placeholder="name"
                                    required>
-                            </div>
-                            <div class="edge">Measure unit
+                        </div>
+                        <div class="edge">Measure unit
                             <select name="measureUnit" id="measureUnit-edit-input" class="edge" required>
-                                <c:forEach items="${measureUnits}" var="measureUnit">
+                                <C:forEach items="${measureUnits}" var="measureUnit">
                                     <option value="${measureUnit.measureUnitId}">${measureUnit.measureName}</option>
-                                </c:forEach>
+                                </C:forEach>
                             </select>
-                            </div>
-                            <div class="edge">Shelf life
+                        </div>
+                        <div class="edge">Shelf life
                             <input type="text" name="shelfLife" id="shelfLife-edit-input"
                                    value="${shelfLife  !=null ? shelfLife : ''}" class="edge"
                                    placeholder="shelf-life"
                                    required>
-                            </div>
-                            <div class="edge">Basic price
+                        </div>
+                        <div class="edge">Basic price
                             <input type="text" name="basicPrice" id="basicPrice-edit-input"
                                    value="${basicPrice  !=null ? basicPrice : ''}"
                                    class="edge"
                                    placeholder="BasicPrice"
                                    required>
-                            </div>
-                            <button type="submit" class="edge">Update</button>
                         </div>
-                    </form>
-                </div>
+                        <button type="submit" class="edge">Update</button>
+                    </div>
+                </form>
             </div>
-            <%--      edit end--%>
-
-
         </div>
+        <%--      edit end--%>
+
+
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,9 +1,7 @@
 package com.example.storage_project.dao;
 
-import com.example.storage_project.model.Employee;
-import com.example.storage_project.command.EmployeeUpdateCommand;
-import com.example.storage_project.model.JobTitle;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.example.storage_project.model.employee.Employee;
+import com.example.storage_project.command.employee.EmployeeUpdateCommand;
 
 import java.util.List;
 import java.util.Optional;

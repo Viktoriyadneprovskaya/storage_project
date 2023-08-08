@@ -1,6 +1,6 @@
 package com.example.storage_project.dao;
 
-import com.example.storage_project.model.JobTitle;
+import com.example.storage_project.model.employee.JobTitle;
 
 import java.util.List;
 

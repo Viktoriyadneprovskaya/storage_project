@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Document info</title>
@@ -25,7 +26,8 @@
 
             </div>
             <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                     DOCUMENTS
                 </button>
                 <ul class="dropdown-menu">
@@ -44,7 +46,8 @@
                 </ul>
             </div>
             <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                     CONTRACTORS
                 </button>
                 <ul id="myDropdown" class="dropdown-menu">
@@ -53,19 +56,23 @@
 
                 </ul>
             </div>
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <div class="btn-group aline">
+                    <button class="btn btn-secondary btn-lg strech" type="button">
+                        <a class="new-style" href="/employees">EMPLOYEES</a>
+                    </button>
+                </div>
+            </sec:authorize>
             <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg strech" type="button">
-                    <a class="new-style" href="/employees">EMPLOYEES</a>
-                </button>
-            </div>
-            <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech rep" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary btn-lg dropdown-toggle strech rep" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_balance">Product Balance</a></li>
+                    <li><a class="dropdown-item" href="/reports/sales_by_product">Sales by products</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_sales_by_contractor">Sales by contractors</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -74,23 +81,29 @@
         <div class="bar">
             <div class="info-line">
                 <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="employee_page">Employee info</a></li>
                     </ul>
-                    <div class="buttonStyle float-right">
-                        <button type="button" class="btn btn-secondary"><a href="/entire_document/update?document_id=${document.documentId}">Edit document</a></button>
-                    </div>
-                    <div class="buttonStyle float-right">
-                        <button type="button" class="btn btn-secondary"><a href="/documents/delete?id=${document.documentId}">Delete document</a></button>
-                    </div>
-
-            </div>
+                    <sec:authorize access="hasAuthority('ADMIN')">
+                        <div class="buttonStyle float-right">
+                            <button type="button" class="btn btn-secondary"><a
+                                    href="/entire_document/update?document_id=${document.documentId}">Edit document</a>
+                            </button>
+                        </div>
+                        <div class="buttonStyle float-right">
+                            <button type="button" class="btn btn-secondary"><a
+                                    href="/documents/delete?id=${document.documentId}">Delete document</a></button>
+                        </div>
+                    </sec:authorize>
+                </div>
             </div>
             <div class="document-title">
-                <h2>${document.invoiceType.invoiceType.toUpperCase()} document #${document.documentId} from ${document.creationDate}</h2>
+                <h2>${document.invoiceType.invoiceType.toUpperCase()} document #${document.documentId}
+                    from ${document.creationDate}</h2>
             </div>
             <div class="grid-container">
                 <div>${document.contractor.contractorType.contractorType.toUpperCase()}</div>
@@ -123,14 +136,15 @@
                     <strong>Sum, hrn</strong>
                 </div>
                 <%int number = 1; %>
-            <C:forEach items="${doc_details}" var="doc_detail">
-                <div><%=number++%></div>
-                <div>${doc_detail.product.name}</div>
-                <div>${doc_detail.unit.measureName}</div>
-                <div>${doc_detail.quantity}</div>
-                <div>${doc_detail.price}</div>
-                <div>${doc_detail.sum}</div>
-            </C:forEach>
+                <C:forEach items="${doc_details}" var="doc_detail">
+                    <div><%=number++%>
+                    </div>
+                    <div>${doc_detail.product.name}</div>
+                    <div>${doc_detail.unit.measureName}</div>
+                    <div>${doc_detail.quantity}</div>
+                    <div>${doc_detail.price}</div>
+                    <div>${doc_detail.sum}</div>
+                </C:forEach>
             </div>
             <div class="sum">Total sum: ${sum}hrn</div>
             <button type="submit" class="btn btn-light edge">PRINT</button>

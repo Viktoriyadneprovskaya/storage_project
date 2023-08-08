@@ -2,10 +2,10 @@ package com.example.storage_project.dao.impl;
 
 
 import com.example.storage_project.command.document.DocDetailsUpdateModel;
-import com.example.storage_project.model.Contractors;
-import com.example.storage_project.model.DocumentDetails;
+import com.example.storage_project.model.contractor.Contractors;
+import com.example.storage_project.model.document.DocumentDetails;
 import com.example.storage_project.dao.DocDetailsDao;
-import com.example.storage_project.model.Product;
+import com.example.storage_project.model.product.Product;
 import com.example.storage_project.service.MeasureUnitService;
 import com.example.storage_project.service.ProductService;
 import org.hibernate.Session;
@@ -83,13 +83,5 @@ public class DocDetailsDaoImpl implements DocDetailsDao {
         transaction.commit();
         session.close();
     }
-
-//    @Override
-//    public void updateInputDocDetailsById(DocDetailsUpdateModel docDetailsUpdateModel) {
-//        Product product = productService.getProductById(docDetailsUpdateModel.getProducts());
-//        double price = docDetailsUpdateModel.getPrice();
-//        double sum = price * docDetailsUpdateModel.getQuantities();
-//    }
-
 
 }

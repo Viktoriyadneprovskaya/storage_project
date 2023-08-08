@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
@@ -53,17 +51,6 @@
             <div class="btn-group aline">
                 <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                    PRODUCT MOVEMENT
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">List documents</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-            <div class="btn-group aline">
-                <button class="btn btn-secondary btn-lg dropdown-toggle strech" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
                     CONTRACTORS
                 </button>
                 <ul id="myDropdown" class="dropdown-menu">
@@ -82,9 +69,10 @@
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Product balance</a></li>
-                    <li><a class="dropdown-item" href="#">Sales by products</a></li>
-                    <li><a class="dropdown-item" href="#">Sales by contractors</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_balance">Product balance</a></li>
+                    <li><a class="dropdown-item" href="/reports/sales_by_product">Sales by products</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_sales_by_contractor">Sales by contractors</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -94,39 +82,40 @@
             <div class="bar">
                 <div class="info-line">
                     <div class="btn-group cntr-grp">
-                        <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
                         </ul>
-            </div>
+                    </div>
                 </div>
-
-            Welcome, ADMIN <sec:authentication property="name"/>
-            <div class="buttonStyle float-right">
-                <button type="button" class="btn btn-secondary btn-lg"><a href="/logout">Logout</a></button>
-            </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Firstname Lastname</th>
-                    <th scope="col">Job title</th>
-                </tr>
-                </thead>
-                <tbody>
+                Welcome, ADMIN <sec:authentication property="name"/>
+                <div class="buttonStyle float-right">
+                    <button type="button" class="btn btn-secondary btn-lg"><a href="/logout">Logout</a></button>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Firstname Lastname</th>
+                        <th scope="col">Job title</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>${employee.username}</td>
                         <td>${employee.firstName} ${employee.lastName}</td>
                         <td>${employee.jobTitle}</td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
 
+            </div>
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

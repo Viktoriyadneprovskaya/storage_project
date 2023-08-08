@@ -1,7 +1,7 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.dao.JobTitleDao;
-import com.example.storage_project.model.JobTitle;
+import com.example.storage_project.model.employee.JobTitle;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

@@ -1,9 +1,9 @@
 package com.example.storage_project.controller;
 
-import com.example.storage_project.command.EmployeeCommand;
-import com.example.storage_project.command.EmployeeUpdateCommand;
-import com.example.storage_project.model.Employee;
-import com.example.storage_project.model.JobTitle;
+import com.example.storage_project.command.employee.EmployeeCommand;
+import com.example.storage_project.command.employee.EmployeeUpdateCommand;
+import com.example.storage_project.model.employee.Employee;
+import com.example.storage_project.model.employee.JobTitle;
 import com.example.storage_project.service.EmployeeService;
 import com.example.storage_project.service.JobTitleService;
 import org.springframework.stereotype.Controller;
@@ -33,9 +33,9 @@ public class EmployeeManagementController {
     }
 
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("employee")EmployeeCommand command) {
+    public String saveEmployee(@ModelAttribute("employee") EmployeeCommand command) {
         JobTitle jobTitle = jobTitleService.getJobTitleById(command.getJobTitle());
-        Employee employee =Employee.builder()
+        Employee employee = Employee.builder()
                 .username(command.getUsername())
                 .password(command.getPassword())
                 .firstName(command.getFirstName())
@@ -54,7 +54,7 @@ public class EmployeeManagementController {
 
     @PostMapping("/update")
     public String updateEmployee(@ModelAttribute("employee") EmployeeUpdateCommand command) {
-        Long id= command.getId();
+        Long id = command.getId();
         employeeService.updateEmployeeById(command);
         return "redirect:/employees";
     }

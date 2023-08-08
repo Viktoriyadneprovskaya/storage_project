@@ -1,7 +1,8 @@
 package com.example.storage_project.controller;
 
-import com.example.storage_project.command.ContractorUpdateCommand;
-import com.example.storage_project.model.*;
+import com.example.storage_project.command.contractor.ContractorUpdateCommand;
+import com.example.storage_project.model.contractor.*;
+import com.example.storage_project.model.product.PriceType;
 import com.example.storage_project.service.AddressService;
 import com.example.storage_project.service.ContractorService;
 import com.example.storage_project.service.ContractorTypeService;
@@ -30,11 +31,7 @@ public class ContractorController {
     @GetMapping
     public String getAllContractors(Model model, @RequestParam("contrTypeId") Long contrTypeId) {
         List<Contractors> contractors = contractorService.getAllContractors(contrTypeId);
-//        List<ContractorType> contractorTypes = contractorTypeService.getAllContractorTypes();
-//        List<PriceType> priceTypes = priceTypeService.getAllPriceTypes();
         model.addAttribute("contractors", contractors);
-//        model.addAttribute("contractorTypes", contractorTypes);
-//        model.addAttribute("priceTypes",priceTypes);
         return "contractors";
     }
 

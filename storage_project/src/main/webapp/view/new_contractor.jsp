@@ -68,9 +68,10 @@
                     REPORTS
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_balance">Product Balance</a></li>
+                    <li><a class="dropdown-item" href="/reports/sales_by_product">Sales by products</a></li>
+                    <li><a class="dropdown-item" href="/reports/product_sales_by_contractor">Sales by contractors</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -79,13 +80,14 @@
         <div class="bar">
             <div class="info-line">
                 <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="employee_page">Employee info</a></li>
+                        <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
                     </ul>
-            </div>
+                </div>
             </div>
 
             <div class="document-title">
@@ -107,39 +109,35 @@
                     </div>
                     <div>Contractor type</div>
                     <div>
-                            <select class="doc-input" name="contractorType" required>
-                                <c:forEach items="${contractorTypes}" var="contractorType">
-                                    <option value="${contractorType.contractorTypeID}">${contractorType.contractorType}</option>
-                                </c:forEach>
-                            </select>
+                        <select class="doc-input" name="contractorType" required>
+                            <c:forEach items="${contractorTypes}" var="contractorType">
+                                <option value="${contractorType.contractorTypeID}">${contractorType.contractorType}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div>Price type</div>
                     <div>
-                            <select class="doc-input" name="priceType" required>
-                                <c:forEach items="${priceTypes}" var="priceType">
-                                    <option value="${priceType.priceTypeId}">${priceType.priceType}</option>
-                                </c:forEach>
-                            </select>
+                        <select class="doc-input" name="priceType" required>
+                            <c:forEach items="${priceTypes}" var="priceType">
+                                <option value="${priceType.priceTypeId}">${priceType.priceType}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div>Country</div>
                     <div>
-<%--                        <form action="new_contractor/save" method="post">--%>
-                            <select class="doc-input" name="country" required>
-                                <c:forEach items="${countries}" var="country">
-                                    <option value="${country.id}">${country.countryName}</option>
-                                </c:forEach>
-                            </select>
-<%--                        </form>--%>
+                        <select class="doc-input" name="country" required>
+                            <c:forEach items="${countries}" var="country">
+                                <option value="${country.id}">${country.countryName}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div>City</div>
                     <div>
-<%--                        <form action="new_contractor/save" method="post">--%>
-                            <select class="doc-input" name="city" required>
-                                <c:forEach items="${cities}" var="city">
-                                    <option value="${city.id}">${city.cityName}</option>
-                                </c:forEach>
-                            </select>
-<%--                        </form>--%>
+                        <select class="doc-input" name="city" required>
+                            <c:forEach items="${cities}" var="city">
+                                <option value="${city.id}">${city.cityName}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div>Index</div>
                     <div>
@@ -151,7 +149,8 @@
                     </div>
                     <div>House number</div>
                     <div>
-                        <input type="text" class="doc-input" name="houseNumber" id="houseNumber-input" onclick="this.value=''">
+                        <input type="text" class="doc-input" name="houseNumber" id="houseNumber-input"
+                               onclick="this.value=''">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-light edge">Save</button>

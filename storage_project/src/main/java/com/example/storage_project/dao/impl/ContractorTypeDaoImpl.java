@@ -1,22 +1,13 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.dao.ContractorTypeDao;
-import com.example.storage_project.model.ContractorType;
-import com.example.storage_project.model.MeasureUnit;
-import org.hibernate.FetchMode;
+import com.example.storage_project.model.contractor.ContractorType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 @Repository
 public class ContractorTypeDaoImpl implements ContractorTypeDao {

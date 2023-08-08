@@ -1,8 +1,7 @@
 package com.example.storage_project.service;
 
 import com.example.storage_project.dao.DocumentsDao;
-import com.example.storage_project.model.Document;
-import com.example.storage_project.model.DocumentDetails;
+import com.example.storage_project.model.document.Document;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

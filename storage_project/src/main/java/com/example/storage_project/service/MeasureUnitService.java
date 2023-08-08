@@ -1,7 +1,7 @@
 package com.example.storage_project.service;
 
 import com.example.storage_project.dao.MeasureUnitDao;
-import com.example.storage_project.model.MeasureUnit;
+import com.example.storage_project.model.product.MeasureUnit;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
