@@ -1,6 +1,7 @@
 package com.example.storage_project.service;
 
 import com.example.storage_project.command.document.DocDetailsUpdateModel;
+import com.example.storage_project.command.document.DocumentCommand;
 import com.example.storage_project.dao.DocDetailsDao;
 import com.example.storage_project.model.contractor.Contractors;
 import com.example.storage_project.model.document.DocumentDetails;

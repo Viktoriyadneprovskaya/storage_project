@@ -41,8 +41,8 @@
                     CREATE DOCUMENT
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/new_input_document?invoice_type=1">Input document</a></li>
-                    <li><a class="dropdown-item" href="/new_document?invoice_type=2">Sales document</a></li>
+                    <li><a class="dropdown-item" href="/documents/new_document?invoice_type=1">Input document</a></li>
+                    <li><a class="dropdown-item" href="/documents/new_document?invoice_type=2">Sales document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -91,7 +91,7 @@
             <div class="document-title">
                 <h2>CREATE NEW SALES DOCUMENT</h2>
             </div>
-            <form:form action="new_document/save?invoice_type=2" method="post" modelAttribute="documentCommand">
+            <form:form action="/documents/new_document/save?invoice_type=1" method="post" modelAttribute="documentCommand">
 
                 <div class="grid-container">
                     <div>Contractor:</div>

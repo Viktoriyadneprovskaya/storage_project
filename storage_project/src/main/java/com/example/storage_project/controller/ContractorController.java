@@ -1,5 +1,6 @@
 package com.example.storage_project.controller;
 
+import com.example.storage_project.command.contractor.ContractorCommand;
 import com.example.storage_project.command.contractor.ContractorUpdateCommand;
 import com.example.storage_project.model.contractor.*;
 import com.example.storage_project.model.product.PriceType;
@@ -64,5 +65,24 @@ public class ContractorController {
         addressService.updateAddressById(address.getAddressId(), command);
         contractorService.updateContractorById(command);
         return "redirect:/contractors/"+command.getContractorId();
+    }
+
+    @GetMapping("/new_contractor")
+    public String getNewContractorPage(Model model) {
+        List<ContractorType> contractorTypes = contractorTypeService.getAllContractorTypes();
+        List<PriceType> priceTypes = priceTypeService.getAllPriceTypes();
+        List<Country> countries = addressService.getAllCountries();
+        List<City> cities = addressService.getAllCities();
+        model.addAttribute("contractorTypes", contractorTypes);
+        model.addAttribute("priceTypes", priceTypes);
+        model.addAttribute("cities", cities);
+        model.addAttribute("countries", countries);
+        return "new_contractor";
+    }
+
+    @PostMapping("/new_contractor/save")
+    public String saveContractor(@ModelAttribute("contractor") ContractorCommand command) {
+        Contractors contractor = contractorService.getSavedContractor(command);
+        return "redirect:/contractors?contrTypeId=" + contractor.getContractorType().getContractorTypeID();
     }
 }

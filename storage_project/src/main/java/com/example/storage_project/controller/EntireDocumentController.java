@@ -23,18 +23,10 @@ import java.util.List;
 public class EntireDocumentController {
     private final DocumentsService documentsService;
     private final DocDetailsService docDetailsService;
-    private final ContractorService contractorService;
-    private final ProductService productService;
-    private final MeasureUnitService measureUnitService;
-    private final InvoiceTypeService invoiceTypeService;
 
     public EntireDocumentController(DocumentsService documentsService, DocDetailsService docDetailsService, ContractorService contractorService, ProductService productService, MeasureUnitService measureUnitService, InvoiceTypeService invoiceTypeService) {
         this.documentsService = documentsService;
         this.docDetailsService = docDetailsService;
-        this.contractorService = contractorService;
-        this.productService = productService;
-        this.measureUnitService = measureUnitService;
-        this.invoiceTypeService = invoiceTypeService;
     }
 
     @GetMapping("/{document_id}")
@@ -53,30 +45,7 @@ public class EntireDocumentController {
     @GetMapping("/update")
     public String getDocumentForUpdate(Model model, @RequestParam("document_id") Long document_id) {
         Document document = documentsService.getDocumentById(document_id);
-        List<DocumentDetails> documentDetails = docDetailsService.getAllDocDetailsByDocumentId(document_id);
-        List<Product> products = productService.getAllProducts();
-        List<MeasureUnit> measureUnits = measureUnitService.getAllMeasureUnits();
-        List<DocDetailsSelected> docDetailsSelectedList = new ArrayList<>();
-        for (DocumentDetails documentDetails1 : documentDetails) {
-            DocDetailsSelected docDetailsSelected = new DocDetailsSelected();
-            docDetailsSelected.setId(documentDetails1.getId());
-            docDetailsSelected.setSelectedMeasureUnit(documentDetails1.getUnit());
-            docDetailsSelected.setSelectedProduct(documentDetails1.getProduct());
-            docDetailsSelected.setSelectedQuantity(documentDetails1.getQuantity());
-            docDetailsSelected.setPrice(documentDetails1.getPrice());
-            docDetailsSelectedList.add(docDetailsSelected);
-        }
-        DocumentUpdateCommand documentUpdateCommand = DocumentUpdateCommand.builder()
-                .id(document.getDocumentId())
-                .contractor(document.getContractor())
-                .myOrganization(contractorService.getMyOrganization())
-                .docDetailsSelected(docDetailsSelectedList)
-                .products(products)
-                .measureUnits(measureUnits)
-                .creationDate(document.getCreationDate())
-                .invoiceType(document.getInvoiceType())
-                .documentId(document.getDocumentId())
-                .build();
+        DocumentUpdateCommand documentUpdateCommand = documentsService.documentToDocumentUpdateCommand(document_id);
         model.addAttribute("document", documentUpdateCommand);
         if (document.getInvoiceType().getInvoiceTypeId() == 2) {
             return "/update_input_document";

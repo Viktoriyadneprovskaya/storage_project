@@ -44,8 +44,8 @@
                     CREATE DOCUMENT
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/new_input_document?invoice_type=1">Input document</a></li>
-                    <li><a class="dropdown-item" href="/new_document?invoice_type=2">Sales document</a></li>
+                    <li><a class="dropdown-item" href="/documents/new_document?invoice_type=1">Input document</a></li>
+                    <li><a class="dropdown-item" href="/documents/new_document?invoice_type=2">Sales document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -159,34 +159,24 @@
                     <form action="/contractors/update" method="post">
                         <div class="aline-form">
                             <input type="text" id="edit-contractorId" name="contractorId"
-                                   value="${contractorId !=null ? contractorId : ''}" hidden>
-                            <%--                    <span class="error" id="error-username">Username is not valid, enter at least 4 symbols</span>--%>
-                            <%--              <span class="error ${errors['username'] != null ? 's-visible' : ''}" id="error-edit-username">Username is not valid, enter at least 4 symbols</span>--%>
                             <div class="edge">Code
                                 <input type="text" name="code" id="code-edit-input"
                                        value="${code !=null ? code : ''}" class="edge"
                                        placeholder="code"
-                                <%--                           onblur="firstNameValidation()"--%>
                                        required>
                             </div>
                             <div class="edge">Contractor name
                                 <input type="text" name="contractorName" id="contractorName-edit-input"
                                        value="${contractorName  !=null ? contractorName : ''}" class="edge"
                                        placeholder="name"
-                                <%--                           onblur="usernameValidation()"--%>
                                        required>
                             </div>
-                            <%--                    <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
-                            <%--              <span class="error ${errors['firstname'] != null ? 's-visible' : ''}" id="error-edit-firstname">Firstname shouldn't be empty and should contain only characters</span>--%>
                             <div class="edge">Contract number
                                 <input type="text" name="contractNumber" id="contractNumber-edit-input"
                                        value="${contractNumber  !=null ? contractNumber : ''}" class="edge"
                                        placeholder="contract number"
-                                <%--                           onblur="lastNameValidation()"--%>
                                        required>
                             </div>
-                            <%--                    <span class="error" id="error-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
-                            <%--              <span class="error ${errors['lastname'] != null ? 's-visible' : ''}" id="error-edit-lastname">Lastname shouldn't be empty and should contain only characters</span>--%>
                             <div class="edge">Contractor type
                                 <select name="contractorType" id="contractorType-edit-input" class="edge" required>
                                     <C:forEach items="${contractorTypes}" var="contractorType">
@@ -194,7 +184,6 @@
                                     </C:forEach>
                                 </select>
                             </div>
-                            <%--                    <span class="error" id="error-email">Enter correct email</span>--%>
                             <div class="edge">Price type
                                 <select name="priceType" id="priceType-edit-input" class="edge" required>
                                     <C:forEach items="${priceTypes}" var="priceType">
@@ -234,7 +223,6 @@
                                        placeholder="index"
                                        required>
                             </div>
-                            <%--                    <span class="error" id="error-email">Enter correct email</span>--%>
                             <button type="submit" class="edge">Update</button>
                         </div>
                     </form>

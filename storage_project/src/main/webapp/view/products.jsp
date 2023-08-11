@@ -45,8 +45,8 @@
                     CREATE DOCUMENT
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/new_input_document?invoice_type=1">Input document</a></li>
-                    <li><a class="dropdown-item" href="/new_document?invoice_type=2">Sales document</a></li>
+                    <li><a class="dropdown-item" href="/documents/new_document?invoice_type=1">Input document</a></li>
+                    <li><a class="dropdown-item" href="/documents/new_document?invoice_type=2">Sales document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">

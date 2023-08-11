@@ -44,8 +44,8 @@
                     CREATE DOCUMENT
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/new_input_document?invoice_type=1">Input document</a></li>
-                    <li><a class="dropdown-item" href="/new_document?invoice_type=2">Sales document</a></li>
+                    <li><a class="dropdown-item" href="/documents/new_document?invoice_type=1">Input document</a></li>
+                    <li><a class="dropdown-item" href="/documents/new_document?invoice_type=2">Sales document</a></li>
                 </ul>
             </div>
             <div class="btn-group aline">
@@ -103,11 +103,9 @@
                     </C:forEach>
                 </select>
 
-                Start date <input type="date" name="startDate" id="start_date_input" value="${reportDates.startDate}"
-                                  onblur="startDateValidation()" lang="en" required>
+                Start date <input type="date" name="startDate" id="start_date_input" value="${reportDates.startDate}" required>
                 <span class="error" id="error_start_date">Start date is not valid</span>
-                End date <input type="date" name="endDate" id="end_date_input" value="${reportDates.endDate}"
-                                onblur="endDateValidation()" lang="en" required>
+                End date <input type="date" name="endDate" id="end_date_input" value="${reportDates.endDate}" required>
                 <span class="error" id="error_end_date">End date is not valid</span>
                 <button type="submit" class="btn group-button">Submit</button>
                    </div>
@@ -140,7 +138,6 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/reports.js"></script>
 </body>
 </html>
 

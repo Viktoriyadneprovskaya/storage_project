@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/storage_first.css"/>
 </head>
 <body>
-<div class="page">
     <div class="form-container">
         <h2 class="title">StorageApp</h2>
         <c:if test="${param.error != null}">
@@ -24,10 +23,9 @@
                 <input name="password" type="password" class="input" placeholder="Enter password">
             </div>
             <div class="reg-center">
-                <button class="reg-button btn btn-success" type="submit">Login</button>
+                <button class="reg-button btn" type="submit">Login</button>
             </div>
         </form>
     </div>
-</div>
 </body>
 </html>
