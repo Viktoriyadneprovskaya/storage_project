@@ -23,10 +23,12 @@ import java.util.List;
 public class EmployeeManagementController {
     private final EmployeeService employeeService;
     private final JobTitleService jobTitleService;
+    private final PasswordEncoder passwordEncoder;
 
-    public EmployeeManagementController(EmployeeService employeeService, JobTitleService jobTitleService, PasswordEncoder passwordEncoder) {
+    public EmployeeManagementController(EmployeeService employeeService, JobTitleService jobTitleService, PasswordEncoder passwordEncoder, PasswordEncoder passwordEncoder1) {
         this.employeeService = employeeService;
         this.jobTitleService = jobTitleService;
+        this.passwordEncoder = passwordEncoder1;
     }
 
     @GetMapping
@@ -43,7 +45,19 @@ public class EmployeeManagementController {
 
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute("employee") EmployeeCommand command) {
-        employeeService.createEmployee(command);
+        JobTitle jobTitle = jobTitleService.getJobTitleById(command.getJobTitle());
+        Role role = employeeService.getRoleById(command.getRole());
+        List<Role> roleList = List.of(role);
+        String encodePassword = passwordEncoder.encode(command.getPassword());
+        Employee employee = Employee.builder()
+                .username(command.getUsername())
+                .password(encodePassword)
+                .firstName(command.getFirstName())
+                .lastName(command.getLastName())
+                .jobTitle(jobTitle)
+                .roles(roleList)
+                .build();
+        employeeService.saveEmployee(employee);
         return "redirect:/employees";
     }
 

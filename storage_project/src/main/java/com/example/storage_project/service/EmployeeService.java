@@ -19,33 +19,18 @@ import java.util.List;
 @Service
 public class EmployeeService implements UserDetailsService {
     private final EmployeeDao employeeDao;
-    private final JobTitleService jobTitleService;
-    private final PasswordEncoder passwordEncoder;
 
-    public EmployeeService(EmployeeDao employeeDao, JobTitleService jobTitleService, PasswordEncoder passwordEncoder) {
+    public EmployeeService(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
-        this.jobTitleService = jobTitleService;
-        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Employee> getAllEmployees(){return employeeDao.getAllEmployees();}
     public void saveEmployee(Employee employee){
         employeeDao.saveEmployee(employee);
     }
-    public void createEmployee(EmployeeCommand command){
-        JobTitle jobTitle = jobTitleService.getJobTitleById(command.getJobTitle());
-        Role role = getRoleById(command.getRole());
-        List<Role> roleList = List.of(role);
-        String encodePassword = passwordEncoder.encode(command.getPassword());
-        Employee employee = Employee.builder()
-                .username(command.getUsername())
-                .password(encodePassword)
-                .firstName(command.getFirstName())
-                .lastName(command.getLastName())
-                .jobTitle(jobTitle)
-                .roles(roleList)
-                .build();
-        saveEmployee(employee);
+    public void createEmployee(EmployeeCommand command, JobTitle jobTitle){
+
+
     }
     public void deleteEmployeeById(Long id){
         employeeDao.deleteEmployeeById(id);
