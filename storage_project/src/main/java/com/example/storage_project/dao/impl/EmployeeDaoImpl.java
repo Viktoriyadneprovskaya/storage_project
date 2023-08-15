@@ -3,6 +3,7 @@ import com.example.storage_project.model.employee.Employee;
 import com.example.storage_project.command.employee.EmployeeUpdateCommand;
 import com.example.storage_project.dao.EmployeeDao;
 import com.example.storage_project.model.employee.JobTitle;
+import com.example.storage_project.model.security.Role;
 import com.example.storage_project.service.JobTitleService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,7 +38,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         session.close();
         return employees;
     }
-
     @Override
     public void saveEmployee(Employee employee) {
         Session session = sessionFactory.openSession();
@@ -46,7 +46,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void deleteEmployeeById(Long id) {
         Session session = sessionFactory.openSession();
@@ -56,7 +55,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void updateEmployeeById(EmployeeUpdateCommand command) {
         JobTitle jobTitle = jobTitleService.getJobTitleById(command.getJobTitle());
@@ -70,7 +68,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public Optional<Employee> findEmployeeByUsername(String username) {
         Session session = sessionFactory.openSession();
@@ -82,7 +79,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         session.close();
         return employee;
     }
-
     @Override
     public Employee getEmployeeById(Long id) {
         Session session = sessionFactory.openSession();
@@ -93,5 +89,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employee;
     }
 
+    @Override
+    public List<Role> getAllRoles() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Query<Role> query = session.createQuery("""
+                select r from Role r
+                """, Role.class);
+        List<Role> roles = query.getResultList();
+        transaction.commit();
+        session.close();
+        return roles;
+    }
 
+    @Override
+    public Role getRoleById(Long roleId) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Role role = session.get(Role.class, roleId);
+        transaction.commit();
+        session.close();
+        return role;
+    }
 }

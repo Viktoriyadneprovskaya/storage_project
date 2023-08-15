@@ -19,7 +19,7 @@ import javax.persistence.*;
 @ToString
 @Builder
 @AllArgsConstructor
-//join fetch d.storageName
+
 @org.hibernate.annotations.NamedQueries(
         {
                 @org.hibernate.annotations.NamedQuery(
@@ -42,9 +42,6 @@ public class Document {
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "contractor")
     Contractors contractor;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "storage")
-//    Storage storage;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "price_type")
 PriceType priceType;
@@ -56,6 +53,4 @@ PriceType priceType;
     InvoiceType invoiceType;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "document")
     List<DocumentDetails> documentDetails = new ArrayList<>();
-
-
 }

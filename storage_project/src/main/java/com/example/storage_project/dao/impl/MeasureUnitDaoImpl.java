@@ -27,7 +27,6 @@ public class MeasureUnitDaoImpl implements MeasureUnitDao {
         session.close();
         return measureUnit;
     }
-
     @Override
     public List<MeasureUnit> getAllMeasureUnits() {
         Session session = sessionFactory.openSession();

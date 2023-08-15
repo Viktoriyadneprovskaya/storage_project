@@ -1,6 +1,5 @@
 package com.example.storage_project.controller;
 
-
 import com.example.storage_project.command.reports.ProductSales;
 import com.example.storage_project.command.reports.ProductsBalance;
 import com.example.storage_project.command.reports.ReportDatesCommand;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -75,10 +73,11 @@ public class ReportsController {
         Contractors contractor = contractorService.getContractorById(Long.valueOf(contractorID));
         List<ProductSales> productSales = reportsService.getSalesProductsByContractor(reportDatesCommand.getStartDate(),reportDatesCommand.getEndDate(),contractorID);
         List<Contractors> contractors = contractorService.getAllContractors(INVOICE_CONTRACTOR_TYPE);
+        Long contractorId = contractor.getContractorId();
         model.addAttribute("contractors", contractors);
         model.addAttribute("productSales", productSales);
         model.addAttribute("contractor",contractor);
+        model.addAttribute("contractor_id",contractorId);
         return "product_sales_by_contractor_report";
-
     }
 }

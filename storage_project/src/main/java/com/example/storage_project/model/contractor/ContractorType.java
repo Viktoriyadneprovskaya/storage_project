@@ -6,11 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,6 +22,4 @@ public class ContractorType {
     Long contractorTypeID;
     @Column(name = "contractor_type")
     String contractorType;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contractorType")
-//    private List<Contractors> contractors = new ArrayList<>();
 }

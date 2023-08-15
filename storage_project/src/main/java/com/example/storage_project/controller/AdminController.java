@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/admin")
 public class AdminController {
     private final EmployeeService employeeService;
-
     public AdminController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
     @GetMapping("/{id}/{username}")
     public String init(@PathVariable Long id, @PathVariable String username, Model model){
         Employee employee = employeeService.getEmployeeById(id);

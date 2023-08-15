@@ -15,11 +15,9 @@ import java.util.List;
 @Repository
 public class AddressDaoImpl implements AddressDao {
     private final SessionFactory sessionFactory;
-
     public AddressDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
     @Override
     public void saveAddress(Address address) {
         Session session = sessionFactory.openSession();
@@ -28,7 +26,6 @@ public class AddressDaoImpl implements AddressDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public Address getAddressById(Long id) {
         Session session = sessionFactory.openSession();
@@ -38,8 +35,6 @@ public class AddressDaoImpl implements AddressDao {
         session.close();
         return address;
     }
-
-
     @Override
     public void deleteAddressById(Long id) {
         Session session = sessionFactory.openSession();
@@ -49,7 +44,6 @@ public class AddressDaoImpl implements AddressDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void updateAddressById(Long id, ContractorUpdateCommand command) {
         Country country = getCountryById(command.getCountry());
@@ -65,7 +59,6 @@ public class AddressDaoImpl implements AddressDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public Address findAddressByContractorId(Long id) {
         Session session = sessionFactory.openSession();
@@ -77,7 +70,6 @@ public class AddressDaoImpl implements AddressDao {
         session.close();
         return address;
     }
-
     @Override
     public List<Country> getAllCountries() {
         Session session = sessionFactory.openSession();
@@ -90,7 +82,6 @@ public class AddressDaoImpl implements AddressDao {
         session.close();
         return countries;
     }
-
     @Override
     public List<City> getAllCities() {
         Session session = sessionFactory.openSession();
@@ -103,7 +94,6 @@ public class AddressDaoImpl implements AddressDao {
         session.close();
         return cities;
     }
-
     @Override
     public Country getCountryById(Long id) {
         Session session = sessionFactory.openSession();
@@ -116,7 +106,6 @@ public class AddressDaoImpl implements AddressDao {
         session.close();
         return country;
     }
-
     @Override
     public City getCityById(Long id) {
         Session session = sessionFactory.openSession();
@@ -129,5 +118,4 @@ public class AddressDaoImpl implements AddressDao {
         session.close();
         return city;
     }
-
 }

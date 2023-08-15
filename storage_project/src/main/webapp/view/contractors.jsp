@@ -50,7 +50,7 @@
                         aria-expanded="false">
                     CONTRACTORS
                 </button>
-                <ul id="myDropdown" class="dropdown-menu">
+                <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/contractors?contrTypeId=1">Suppliers</a></li>
                     <li><a class="dropdown-item" href="/contractors?contrTypeId=2">Customers</a></li>
                 </ul>
@@ -77,56 +77,45 @@
         </div>
     </div>
     <div class="block_center">
-        <div class="bar">
-            <div class="info-line">
-                <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        <i class="bi bi-person-circle"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
-                    </ul>
-
-                    <sec:authorize access="hasAuthority('ADMIN')">
-                        <div class="buttonStyle float-right">
-                            <button type="button" class="btn btn-secondary btn-lg " id="add-btn"><a
-                                    href="/contractors/new_contractor">Add contractor</a></button>
-                        </div>
-                    </sec:authorize>
-                </div>
-            </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Contract number</th>
-                    <th scope="col">Contractor type</th>
-                    <th scope="col">Price type</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%int number = 1; %>
-                <C:forEach items="${contractors}" var="contractor">
-                    <tr>
-                        <td><%=number++%>
-                        </td>
-                        <td class="name">${contractor.code}</td>
-                        <td><a class="my-style"
-                               href="contractors/${contractor.contractorId}">${contractor.contractorName}</a></td>
-                        <td>${contractor.contractNumber}</td>
-                        <td>${contractor.contractorType.contractorType}</td>
-                        <td>${contractor.priceType.priceType}</td>
-                    </tr>
-                </C:forEach>
-                </tbody>
-            </table>
-
+        <div class="info-line">
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <button type="button" class="btn btn-secondary btn-lg" id="add-btn">Add contractor</button>
+            </sec:authorize>
+            <button type="button" class="btn employee-button">
+                <a href="/employee_page"><i class="bi bi-person-circle"></i></a>
+            </button>
         </div>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Code</th>
+                <th scope="col">Name</th>
+                <th scope="col">Contract number</th>
+                <th scope="col">Contractor type</th>
+                <th scope="col">Price type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%int number = 1; %>
+            <C:forEach items="${contractors}" var="contractor">
+                <tr>
+                    <td><%=number++%>
+                    </td>
+                    <td class="name">${contractor.code}</td>
+                    <td><a class="my-style"
+                           href="contractors/${contractor.contractorId}">${contractor.contractorName}</a></td>
+                    <td>${contractor.contractNumber}</td>
+                    <td>${contractor.contractorType.contractorType}</td>
+                    <td>${contractor.priceType.priceType}</td>
+                </tr>
+            </C:forEach>
+            </tbody>
+        </table>
+
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/new_contractor.js"></script>
 </body>
 </html>

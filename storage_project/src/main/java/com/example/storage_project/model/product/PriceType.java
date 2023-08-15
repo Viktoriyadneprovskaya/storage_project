@@ -5,11 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import net.bytebuddy.agent.builder.AgentBuilder;
-
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -28,7 +25,4 @@ public class PriceType {
     String priceType;
     @Column(name = "charge_percent")
     double chargePercent;
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "priceType")
-//    List<Document> documents;
-
 }

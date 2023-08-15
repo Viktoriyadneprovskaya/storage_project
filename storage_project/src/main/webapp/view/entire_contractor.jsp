@@ -12,6 +12,7 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/main_page.css">
     <link rel="stylesheet" href="/css/additional.css">
+    <link rel="stylesheet" href="/css/document.css">
 
 </head>
 <body>
@@ -81,75 +82,65 @@
     </div>
 
     <div class="block_center">
-        <div class="bar">
             <div class="info-line">
-                <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        <i class="bi bi-person-circle"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
-                    </ul>
+                <div class="btn-container">
                     <sec:authorize access="hasAuthority('ADMIN')">
-                        <div class="buttonStyle float-right">
-                            <button type="button" class="btn btn-secondary"
+                            <button type="button" class="btn btn-secondary btn-custom"
                                     onclick="openEditModal('${contractor.contractorId}', '${contractor.code}', '${contractor.contractorName}', '${contractor.contractNumber}', '${contractor.contractorType.contractorType}','${contractor.priceType.priceType}')">
-                                Edit contractor
+                                Edit
                             </button>
-                        </div>
-                        <div class="buttonStyle float-right">
-                            <button type="button" class="btn btn-secondary"><a
-                                    href="/contractors/delete?id=${contractor.contractorId}&contrTypeId=${contractor.contractorType.contractorTypeID}">Delete
-                                contractor</a></button>
-                        </div>
+                        <button type="button" class="btn btn-secondary btn-custom" data-contractor-id="${contractor.contractorId}"
+                                data-contractor-type-id="${contractor.contractorType.contractorTypeID}" id="deleteButton">Delete</button>
                     </sec:authorize>
                 </div>
+    <button type="button" class="btn employee-button">
+        <a href="/employee_page"><i class="bi bi-person-circle"></i></a>
+    </button>
+
             </div>
             <h2>${contractor.contractorName.toUpperCase()} information</h2>
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Contract number</th>
-                    <th scope="col">Contractor type</th>
-                    <th scope="col">Price type</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>${contractor.contractorName}</td>
-                    <td>${contractor.code}</td>
-                    <td>${contractor.contractNumber}</td>
-                    <td>${contractor.contractorType.contractorType}</td>
-                    <td>${contractor.priceType.priceType}</td>
-                </tr>
-                </tbody>
-            </table>
-
-            </br>
-            </br>
-            <h2>Address</h2>
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">Index</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Address</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>${address.index}</td>
-                    <td>${address.country.countryName}</td>
-                    <td>${address.city.cityName}</td>
-                    <td>${address.street} ${address.houseNumber}</td>
-                </tr>
-                </tbody>
-            </table>
-
+            <div class="grid-container">
+                <div>Code:</div>
+                <div>
+                    ${contractor.code}
+                </div>
+                <div>Contractor name:</div>
+                <div>
+                    ${contractor.contractorName}
+                </div>
+                <div>Contract number:</div>
+                <div>
+                    ${contractor.contractNumber}
+                </div>
+                <div>Contractor type</div>
+                <div>
+                   ${contractor.contractorType.contractorType}
+                </div>
+                <div>Price type</div>
+                <div>
+                    ${contractor.priceType.priceType}
+                </div>
+                <div>Index</div>
+                <div>
+                    ${address.index}
+                </div>
+                <div>Country</div>
+                <div>
+                   ${address.country.countryName}
+                </div>
+                <div>City</div>
+                <div>
+                    ${address.city.cityName}
+                </div>
+                <div>Street</div>
+                <div>
+                    ${address.street}
+                </div>
+                <div>House number</div>
+                <div>
+                   ${address.houseNumber}
+                </div>
+            </div>
 
             <%--edit start--%>
             <div class="modal" id="edit-modal">
@@ -158,7 +149,7 @@
                     <h2 class="title">Update existing contractor</h2>
                     <form action="/contractors/update" method="post">
                         <div class="aline-form">
-                            <input type="text" id="edit-contractorId" name="contractorId"
+                            <input type="text" class="hidden-input" id="edit-contractorId" name="contractorId">
                             <div class="edge">Code
                                 <input type="text" name="code" id="code-edit-input"
                                        value="${code !=null ? code : ''}" class="edge"
@@ -229,9 +220,6 @@
                 </div>
             </div>
             <%--      edit end--%>
-
-
-        </div>
     </div>
 </div>
 <script src="/js/contractors.js"></script>

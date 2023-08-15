@@ -36,7 +36,6 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-//    @PreAuthorize("hasRole('ADMIN')")
     public String saveProduct(@ModelAttribute("product") ProductCommand productCommand) {
         MeasureUnit measureUnit = measureUnitService.getMeasureUnitById(productCommand.getMeasureUnit());
         Product product = productCommand.commandToProduct(productCommand, measureUnit);
@@ -52,7 +51,6 @@ public class ProductController {
     }
 
     @PostMapping("/update")
-//    @PreAuthorize("hasRole('ADMIN')")
     public String updateProduct(@ModelAttribute("product") ProductUpdateCommand command) {
         productService.updateProductById(command);
         return "redirect:/products";

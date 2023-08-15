@@ -1,6 +1,5 @@
 package com.example.storage_project.config;
 
-import com.example.storage_project.service.EmployeeService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,12 +17,10 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static final String SIGNIN_ENDPOINT = "/login";
     public static final String LOGIN_ERROR = "/login?error";
-    private final EmployeeService employeeService;
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final UserDetailsService userDetailsService;
 
-    public SecurityConfig(EmployeeService employeeService, AuthenticationSuccessHandler authenticationSuccessHandler, UserDetailsService userDetailsService) {
-        this.employeeService = employeeService;
+    public SecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler, UserDetailsService userDetailsService) {
         this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.userDetailsService = userDetailsService;
     }
@@ -59,13 +56,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .permitAll();
     }
-
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web
-//                .ignoring()
-//                .antMatchers("/resources/**");
-//    }
 
     @Bean
     public AuthenticationProvider daoAuthManager() {

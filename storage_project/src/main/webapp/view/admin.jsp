@@ -78,44 +78,32 @@
         </div>
     </div>
     <div class="block_center">
-        <div class="bar">
-            <div class="bar">
-                <div class="info-line">
-                    <div class="btn-group cntr-grp">
-                        <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                            <i class="bi bi-person-circle"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
-                        </ul>
-                    </div>
-                </div>
-                Welcome, ADMIN <sec:authentication property="name"/>
-                <div class="buttonStyle float-right">
-                    <button type="button" class="btn btn-secondary btn-lg"><a href="/logout">Logout</a></button>
-                </div>
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Username</th>
-                        <th scope="col">Firstname Lastname</th>
-                        <th scope="col">Job title</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>${employee.username}</td>
-                        <td>${employee.firstName} ${employee.lastName}</td>
-                        <td>${employee.jobTitle}</td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
+        <div class="info-line">
+            <button type="button" class="btn btn-secondary btn-lg" id="logout-button">Log Out</button>
+            <button type="button" class="btn employee-button">
+                <a href="/employee_page"><i class="bi bi-person-circle"></i></a>
+            </button>
         </div>
+        <h2>Welcome, <sec:authentication property="name"/></h2>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Firstname Lastname</th>
+                <th scope="col">Job title</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>${employee.username}</td>
+                <td>${employee.firstName} ${employee.lastName}</td>
+                <td>${employee.jobTitle}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/admin.js"></script>
 </body>
 </html>

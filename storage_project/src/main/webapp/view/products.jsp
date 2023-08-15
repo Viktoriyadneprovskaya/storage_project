@@ -19,8 +19,10 @@
 <div class="wrapper">
     <div class="block_left">
         <div class="logo">
+
             <img src="/pictures/logo.jpg">
             <a class="logo-style" href="/products">STORAGE</a>
+        </div>
         </div>
         <div class="menu-style">
             <div class="btn-group aline">
@@ -82,21 +84,14 @@
     </div>
 
     <div class="block_center">
-<%--        <div class="bar">--%>
-            <div class="info-line">
-                <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn">
-                        <i class="bi bi-person-circle"></i><a class="dropdown-item" href="/employee_page">Employee
-                        info</a>
-                    </button>
-<%--                </div>--%>
-
-                <sec:authorize access="hasAuthority('ADMIN')">
-                    <div class="buttonStyle float-right">
-                        <button type="button" class="btn btn-secondary btn-lg " id="add-btn">+ Add Product</button>
-                    </div>
-                </sec:authorize>
-            </div>
+        <div class="bar">
+        <div class="info-line">
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <button type="button" class="btn btn-secondary btn-lg" id="add-btn">+ Add Product</button>
+            </sec:authorize>
+            <button type="button" class="btn employee-button">
+                <a href="/employee_page"><i class="bi bi-person-circle"></i></a>
+            </button>
         </div>
         <table class="table table-striped table-hover">
             <thead>
@@ -218,10 +213,8 @@
             </div>
         </div>
         <%--      edit end--%>
-
-
+        </div>
     </div>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/product.js"></script>
 </body>

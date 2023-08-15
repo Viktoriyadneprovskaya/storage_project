@@ -65,7 +65,6 @@ function addRow() {
     quantitiesInput.type = "number";
     quantitiesInput.className = "doc-input";
     quantitiesInput.name = "docDetailsRows["+(count.textContent)+"].quantities";
-    // quantitiesInput.id = "quantity-input";
     quantitiesInput.required = true;
     row.appendChild(quantitiesInput);
 

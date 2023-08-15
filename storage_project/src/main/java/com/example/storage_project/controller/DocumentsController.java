@@ -1,23 +1,13 @@
 package com.example.storage_project.controller;
 
-import com.example.storage_project.command.document.DocDetailsModel;
-import com.example.storage_project.command.document.DocDetailsRow;
 import com.example.storage_project.command.document.DocumentCommand;
 import com.example.storage_project.command.document.DocumentModel;
-import com.example.storage_project.model.MyOrganization;
-import com.example.storage_project.model.contractor.Contractors;
 import com.example.storage_project.model.document.Document;
-import com.example.storage_project.model.document.DocumentDetails;
-import com.example.storage_project.model.document.InvoiceType;
-import com.example.storage_project.model.product.MeasureUnit;
-import com.example.storage_project.model.product.Product;
 import com.example.storage_project.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

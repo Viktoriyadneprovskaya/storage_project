@@ -5,7 +5,6 @@ import com.example.storage_project.model.product.Product;
 import lombok.*;
 
 import javax.persistence.*;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,5 +31,4 @@ public class DocumentDetails {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doc_id")
     Document document;
-
 }

@@ -79,20 +79,12 @@
             </div>
         </div>
     </div>
-
     <div class="block_center">
-        <div class="bar">
-            <div class="info-line">
-                <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        <i class="bi bi-person-circle"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="employee-line">
+            <button type="button" class="btn employee-button">
+                <a href="/employee_page"><i class="bi bi-person-circle"></i></a>
+            </button>
+        </div>
             <h2 class="title-report">PRODUCTS SALES</h2>
             <br>
             <form:form action="/reports/sales_by_product" method="post" modelAttribute="reportDates">
@@ -128,8 +120,6 @@
                 </C:forEach>
                 </tbody>
             </table>
-
-        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

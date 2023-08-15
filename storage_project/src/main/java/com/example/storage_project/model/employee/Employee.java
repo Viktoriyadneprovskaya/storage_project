@@ -3,7 +3,6 @@ package com.example.storage_project.model.employee;
 import com.example.storage_project.model.security.Role;
 import lombok.*;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;

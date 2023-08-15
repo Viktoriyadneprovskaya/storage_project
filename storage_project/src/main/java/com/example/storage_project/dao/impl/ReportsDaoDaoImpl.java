@@ -31,24 +31,13 @@ public class ReportsDaoDaoImpl implements ReportsDao {
         Transaction transaction = session.beginTransaction();
         StoredProcedureQuery storedProcedure = session.createStoredProcedureQuery("getProductQuantities");
         List<Object[]> resultList = storedProcedure.getResultList();
-
         List<ProductsBalance> productQuantities = resultList.stream()
-                .map(result -> new ProductsBalance((String)result[0], (Double) result[1])
-//                    String product = (String) result[0];
-//                    double quantity = (Double) result[1];
-//                    ProductsBalance productQuantity = new ProductsBalance();
-//                    productQuantity.setProduct(product);
-//                    productQuantity.setQuantity(quantity);
-//                    return productQuantity;
-                )
+                .map(result -> new ProductsBalance((String)result[0], (Double) result[1]))
                 .collect(Collectors.toList());
         transaction.commit();
         session.close();
         return productQuantities;
     }
-
-
-
     @Override
     public List<ProductSales> getProductSalesByDate(LocalDate startDate, LocalDate endDate) {
         Session session = sessionFactory.openSession();
@@ -67,7 +56,6 @@ public class ReportsDaoDaoImpl implements ReportsDao {
         session.close();
         return productSales;
     }
-
     @Override
     public List<ProductSales> getSalesProductsByContractor(LocalDate startDate, LocalDate endDate, int contractorId) {
         Session session = sessionFactory.openSession();

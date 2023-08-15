@@ -5,7 +5,6 @@ import lombok.*;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
-
 import javax.persistence.*;
 
 @Getter

@@ -2,7 +2,6 @@ package com.example.storage_project.model.product;
 
 import lombok.*;
 
-
 import javax.persistence.*;
 
 @Getter
@@ -26,6 +25,5 @@ public class Product {
     String shelfLife;
     @Column(name = "basic_price")
     Double basicPrice;
-
 }
 

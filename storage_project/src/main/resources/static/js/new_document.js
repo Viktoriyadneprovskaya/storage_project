@@ -1,3 +1,6 @@
+const editButton = document.getElementById('edit-btn')
+const deleteButton = document.getElementById('delete-btn')
+
 function addRow() {
     const products = [
         { productId: 1, name: "Marshmallow White pink" },
@@ -27,13 +30,13 @@ function addRow() {
     const row = document.createElement("div");
     row.className = "dynamic-line";
 
-    var count = document.createElement("div");
+    let count = document.createElement("div");
     count.textContent = document.querySelectorAll(".dynamic-line").length;
     // length + 1;
     count.className = "count";
     row.appendChild(count);
 
-    var productsSelect = document.createElement("select");
+    let productsSelect = document.createElement("select");
     productsSelect.className = "doc-input select1";
     productsSelect.name = "docDetailsRows["+(count.textContent)+"].products";
     productsSelect.required = true;
@@ -71,3 +74,15 @@ function addRow() {
 
     table.appendChild(row);
 }
+
+editButton.addEventListener('click', function (){
+    const documentId = this.getAttribute('data-document-id');
+    const url = `/entire_document/update?document_id=${documentId}`;
+    window.location.href = url;
+});
+
+deleteButton.addEventListener('click', function (){
+    const documentId = this.getAttribute('data-doc-delete-id');
+    const url = `/documents/delete?id=${documentId}`;
+    window.location.href = url;
+});

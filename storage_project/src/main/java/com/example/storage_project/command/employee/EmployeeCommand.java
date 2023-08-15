@@ -22,5 +22,6 @@ public class EmployeeCommand {
     private String firstName;
     private String lastName;
     private Long jobTitle;
+    private Long role;
 
 }

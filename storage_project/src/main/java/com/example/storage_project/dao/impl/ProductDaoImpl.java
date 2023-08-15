@@ -23,7 +23,6 @@ public class ProductDaoImpl implements ProductDao {
         this.sessionFactory = sessionFactory;
         this.measureUnitService = measureUnitService;
     }
-
     @Override
     public List<Product> getAllProducts() {
         Session session = sessionFactory.openSession();
@@ -37,7 +36,6 @@ public class ProductDaoImpl implements ProductDao {
         session.close();
         return products;
     }
-
     @Override
     public Product getProductById(Long id) {
         Session session = sessionFactory.openSession();
@@ -47,7 +45,6 @@ public class ProductDaoImpl implements ProductDao {
         session.close();
         return product;
     }
-
     @Override
     public void saveProduct(Product product) {
         Session session = sessionFactory.openSession();
@@ -56,7 +53,6 @@ public class ProductDaoImpl implements ProductDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void deleteProductById(Long id) {
         Session session = sessionFactory.openSession();
@@ -66,7 +62,6 @@ public class ProductDaoImpl implements ProductDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void updateProductById(ProductUpdateCommand command) {
         MeasureUnit measureUnit = measureUnitService.getMeasureUnitById(command.getMeasureUnit());

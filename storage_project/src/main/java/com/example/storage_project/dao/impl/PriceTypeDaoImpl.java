@@ -29,7 +29,6 @@ public class PriceTypeDaoImpl implements PriceTypeDao {
         session.close();
         return priceTypes;
     }
-
     @Override
     public PriceType getPriceTypeById(Long id) {
         Session session = sessionFactory.openSession();

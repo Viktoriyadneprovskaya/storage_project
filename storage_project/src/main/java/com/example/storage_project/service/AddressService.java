@@ -26,9 +26,6 @@ public class AddressService {
         Address address=addressDao.findAddressByContractorId(id);
         return address;
     }
-    public Address getAddressById(Long id) {
-        return addressDao.getAddressById(id);
-    }
     public List<Country> getAllCountries() {
         return addressDao.getAllCountries();
     }

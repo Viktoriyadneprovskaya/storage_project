@@ -41,7 +41,6 @@ public class ContractorsDaoImpl implements ContractorsDao {
         session.close();
         return contractors;
     }
-
     @Override
     public void saveContractor(Contractors contractor) {
         Session session = sessionFactory.openSession();
@@ -50,7 +49,6 @@ public class ContractorsDaoImpl implements ContractorsDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void deleteContractorById(Long id) {
         Session session = sessionFactory.openSession();
@@ -60,7 +58,6 @@ public class ContractorsDaoImpl implements ContractorsDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void updateContractorById(ContractorUpdateCommand command) {
         ContractorType contractorType = contractorTypeService.getContractorTypeById(command.getContractorType());
@@ -76,7 +73,6 @@ public class ContractorsDaoImpl implements ContractorsDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public Contractors getContractorById(Long id) {
         Session session = sessionFactory.openSession();
@@ -86,7 +82,6 @@ public class ContractorsDaoImpl implements ContractorsDao {
         session.close();
         return contractor;
     }
-
     @Override
     public MyOrganization getMyOrganization() {
         Session session = sessionFactory.openSession();

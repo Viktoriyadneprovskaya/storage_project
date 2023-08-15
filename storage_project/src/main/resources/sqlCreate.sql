@@ -26,11 +26,6 @@ create table storagedb.price_type
     charge_percent double precision
 );
 
-create table storagedb.storage
-(
-    id_storage SERIAL NOT NULL primary key,
-    storage_name varchar(255)
-);
 
 create table storagedb.contractors
 (

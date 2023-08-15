@@ -1,12 +1,10 @@
 package com.example.storage_project.model.document;
 
-import com.example.storage_project.model.document.Document;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
 
 import javax.persistence.*;
 import java.util.List;

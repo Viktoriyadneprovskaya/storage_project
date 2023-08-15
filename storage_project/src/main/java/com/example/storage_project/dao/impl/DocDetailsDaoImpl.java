@@ -42,7 +42,6 @@ public class DocDetailsDaoImpl implements DocDetailsDao {
         session.close();
         return documentDetails;
     }
-
     @Override
     public void saveDocumentDetails(DocumentDetails documentDetails) {
         Session session = sessionFactory.openSession();
@@ -51,7 +50,6 @@ public class DocDetailsDaoImpl implements DocDetailsDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void deleteDocDetailsById(Long id) {
         Session session = sessionFactory.openSession();
@@ -61,7 +59,6 @@ public class DocDetailsDaoImpl implements DocDetailsDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void updateDocDetailsById(DocDetailsUpdateModel docDetailsUpdateModel, Contractors contractor, Long invoiceType) {
         Product product = productService.getProductById(docDetailsUpdateModel.getProducts());
@@ -83,5 +80,4 @@ public class DocDetailsDaoImpl implements DocDetailsDao {
         transaction.commit();
         session.close();
     }
-
 }

@@ -81,32 +81,23 @@
     </div>
 
     <div class="block_center">
-        <div class="bar">
-            <div class="info-line">
-                <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        <i class="bi bi-person-circle"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="employee-line">
+            <button type="button" class="btn employee-button">
+                <a href="/employee_page"><i class="bi bi-person-circle"></i></a>
+            </button>
+        </div>
             <h2 class="title-report">CUSTOMER'S SALES REPORT</h2>
             <br>
                <form:form action="/reports/product_sales_by_contractor" method="post" modelAttribute="reportDates">
                    <div class="report-menu">
             Customer <select name="contractors" required>
                     <C:forEach items="${contractors}" var="contractor">
-                        <option value="${contractor.contractorId}">${contractor.contractorName}</option>
+                        <option value="${contractor.contractorId}" ${contractor.contractorId == contractor_id ? 'selected = "selected"': ''}>${contractor.contractorName}</option>
                     </C:forEach>
                 </select>
 
                 Start date <input type="date" name="startDate" id="start_date_input" value="${reportDates.startDate}" required>
-                <span class="error" id="error_start_date">Start date is not valid</span>
                 End date <input type="date" name="endDate" id="end_date_input" value="${reportDates.endDate}" required>
-                <span class="error" id="error_end_date">End date is not valid</span>
                 <button type="submit" class="btn group-button">Submit</button>
                    </div>
                <br><br>
@@ -134,7 +125,6 @@
                     </tbody>
                 </table>
                </form:form>
-        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

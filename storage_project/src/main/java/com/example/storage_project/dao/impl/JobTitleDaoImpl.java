@@ -16,7 +16,6 @@ public class JobTitleDaoImpl implements JobTitleDao {
     public JobTitleDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
     @Override
     public List<JobTitle> getAllJobTitles() {
         Session session = sessionFactory.openSession();
@@ -29,7 +28,6 @@ public class JobTitleDaoImpl implements JobTitleDao {
         session.close();
         return jobTitles;
     }
-
     @Override
     public JobTitle getJobTitleById(Long id) {
         Session session = sessionFactory.openSession();

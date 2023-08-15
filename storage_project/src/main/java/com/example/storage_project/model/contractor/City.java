@@ -26,6 +26,6 @@ public class City {
     Long id;
     @Column(name = "city_name")
     String cityName;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "city")
-    List<Address> addressList;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "city")
+//    List<Address> addressList;
 }

@@ -15,7 +15,7 @@
 <div class="wrapper">
     <div class="block_left">
         <div class="logo">
-            <img src="pictures/logo.jpg">
+            <img src="/pictures/logo.jpg">
             <a class="logo-style" href="/products">STORAGE</a>
         </div>
         <div class="menu-style">
@@ -76,23 +76,15 @@
         </div>
     </div>
     <div class="block_center">
-        <div class="bar">
-            <div class="info-line">
-                <div class="btn-group cntr-grp">
-                    <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        <i class="bi bi-person-circle"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/employee_page">Employee info</a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="employee-line">
+            <button type="button" class="btn employee-button">
+                <a href="/employee_page"><i class="bi bi-person-circle"></i></a>
+            </button>
+        </div>
             <div class="document-title">
                 <h2>CREATE NEW SALES DOCUMENT</h2>
             </div>
             <form:form action="/documents/new_document/save?invoice_type=1" method="post" modelAttribute="documentCommand">
-
                 <div class="grid-container">
                     <div>Contractor:</div>
                     <div>
@@ -145,7 +137,6 @@
 
                 <button id="submitButton" type="submit" class="btn btn-light edge">CREATE</button>
             </form:form>
-        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

@@ -25,17 +25,10 @@ public class ContractorTypeDaoImpl implements ContractorTypeDao {
                 select ct from ContractorType ct
                 """, ContractorType.class);
         List<ContractorType> contractorTypes =query.getResultList();
-//        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-//        CriteriaQuery<ContractorType> criteriaQuery = criteriaBuilder.createQuery(ContractorType.class);
-//        Root<ContractorType> root = criteriaQuery.from(ContractorType.class);
-//        root.fetch("contractorTypes",JoinType.LEFT_OUTER_JOIN).getFetchParent().setFetchMode("contractorTypes", FetchMode.EAGER);
-//        criteriaQuery.select(root);
-//        List<ContractorType> contractorTypes =session.createQuery(criteriaQuery).getResultList();
         transaction.commit();
         session.close();
         return contractorTypes;
     }
-
     @Override
     public ContractorType getContractorTypeById(Long id) {
         Session session = sessionFactory.openSession();
@@ -45,5 +38,4 @@ public class ContractorTypeDaoImpl implements ContractorTypeDao {
         session.close();
         return contractorType;
     }
-
 }

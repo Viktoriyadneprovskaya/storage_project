@@ -5,8 +5,6 @@ import com.example.storage_project.model.employee.JobTitle;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-
 @Service
 public class JobTitleService {
     private final JobTitleDao jobTitleDao;
@@ -14,8 +12,6 @@ public class JobTitleService {
     public JobTitleService(JobTitleDao jobTitleDao) {
         this.jobTitleDao = jobTitleDao;
     }
-
-
     public List<JobTitle> getAllJobTitles() {
         return jobTitleDao.getAllJobTitles();
     }

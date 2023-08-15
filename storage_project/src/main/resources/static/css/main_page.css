@@ -2,7 +2,6 @@
     display: flex;
 }
 
-
 .block_left, .block_center, .block_right {
     flex: 1;
 }
@@ -24,10 +23,6 @@ img{
 a{
     font-size: xx-large;
     color: #fff;
-}
-.bar {
-    background: #F3F3F3;
-    justify-content: flex-end;
 }
 .logo {
     height: 80px;
@@ -68,9 +63,9 @@ a{
 .rep{
     margin-top: 40px;
 }
-.cntr-grp{
-    width: 100%;
-}
+/*.cntr-grp{*/
+/*    width: 100%;*/
+/*}*/
 
 .d-flex {
     width: 100%;
@@ -119,9 +114,9 @@ a{
     margin-bottom: 5px;
     width: 100%;
 }
-.error{
-    display: none;
-}
+/*.error{*/
+/*    display: none;*/
+/*}*/
 .show{
     display: block !important;
 }
@@ -154,6 +149,18 @@ a{
     justify-content: space-between;
     flex-direction: row;
     height: 80px;
+    align-items: center;
+}
+.employee-button{
+    display: flex;
+    background-color: #77afd0;
+    justify-content: right;
+}
+.employee-line{
+    display: flex;
+    justify-content: right;
+    height: 80px;
+    align-items: center;
 }
 .trash-style{
     color: #77afd0;
@@ -178,6 +185,20 @@ a{
     gap: 3px;
     margin-left: 5px;
 }
+.hidden-input{
+    height: 0px;
+    visibility: hidden;
+}
 
+.btn-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.btn-custom{
+    height: 40px;
+    line-height: 20px;
+    font-size: 14px;
+}
 
 

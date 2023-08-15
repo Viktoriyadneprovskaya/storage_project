@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -25,6 +24,6 @@ public class Country {
     Long id;
     @Column(name = "countryname")
     String countryName;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "country")
-    List<Address> addressList;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "country")
+//    List<Address> addressList;
 }

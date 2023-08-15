@@ -29,7 +29,6 @@ public class DocumentsDaoImpl implements DocumentsDao {
         session.close();
         return contractors;
     }
-
     @Override
     public void saveDocument(Document document) {
         Session session = sessionFactory.openSession();
@@ -38,7 +37,6 @@ public class DocumentsDaoImpl implements DocumentsDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public void deleteDocumentById(Long id) {
         Session session = sessionFactory.openSession();
@@ -48,7 +46,6 @@ public class DocumentsDaoImpl implements DocumentsDao {
         transaction.commit();
         session.close();
     }
-
     @Override
     public Document getDocumentById(Long docId) {
         Session session = sessionFactory.openSession();
@@ -58,5 +55,4 @@ public class DocumentsDaoImpl implements DocumentsDao {
         session.close();
         return document;
     }
-
 }
