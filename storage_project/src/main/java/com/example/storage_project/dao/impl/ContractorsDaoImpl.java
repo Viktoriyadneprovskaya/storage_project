@@ -1,10 +1,10 @@
 package com.example.storage_project.dao.impl;
 
-import com.example.storage_project.model.*;
 import com.example.storage_project.command.contractor.ContractorUpdateCommand;
-import com.example.storage_project.dao.ContractorsDao;
+import com.example.storage_project.dao.contractors.ContractorsDao;
 import com.example.storage_project.model.contractor.ContractorType;
 import com.example.storage_project.model.contractor.Contractors;
+import com.example.storage_project.model.myOrganization.MyOrganization;
 import com.example.storage_project.model.product.PriceType;
 import com.example.storage_project.service.AddressService;
 import com.example.storage_project.service.ContractorTypeService;

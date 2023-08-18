@@ -1,10 +1,10 @@
 package com.example.storage_project.dao.impl;
 
-import com.example.storage_project.dao.MeasureUnitDao;
+import com.example.storage_project.dao.documents.MeasureUnitDao;
 import com.example.storage_project.model.product.MeasureUnit;
 import com.example.storage_project.model.product.Product;
 import com.example.storage_project.command.product.ProductUpdateCommand;
-import com.example.storage_project.dao.ProductDao;
+import com.example.storage_project.dao.products.ProductDao;
 import com.example.storage_project.service.MeasureUnitService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

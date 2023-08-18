@@ -33,7 +33,7 @@ public class ContractorController {
     public String getAllContractors(Model model, @RequestParam("contrTypeId") Long contrTypeId) {
         List<Contractors> contractors = contractorService.getAllContractors(contrTypeId);
         model.addAttribute("contractors", contractors);
-        return "contractors";
+        return "contractors/contractors";
     }
 
     @GetMapping("/delete")
@@ -56,7 +56,7 @@ public class ContractorController {
         model.addAttribute("address", address);
         model.addAttribute("countries",countries);
         model.addAttribute("cities",cities);
-        return "entire_contractor";
+        return "contractors/entire_contractor";
     }
 
     @PostMapping("/update")
@@ -77,7 +77,7 @@ public class ContractorController {
         model.addAttribute("priceTypes", priceTypes);
         model.addAttribute("cities", cities);
         model.addAttribute("countries", countries);
-        return "new_contractor";
+        return "contractors/new_contractor";
     }
 
     @PostMapping("/new_contractor/save")

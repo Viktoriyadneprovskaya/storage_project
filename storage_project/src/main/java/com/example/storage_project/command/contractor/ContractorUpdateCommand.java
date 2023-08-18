@@ -16,16 +16,16 @@ import lombok.ToString;
 @ToString
 @Builder
 public class ContractorUpdateCommand {
-    Long contractorId;
-    int code;
-    String contractorName;
-    String contractNumber;
-    Long contractorType;
-    Long priceType;
-    int index;
-    String street;
-    String houseNumber;
-    Long city;
-    Long country;
+    private Long contractorId;
+    private int code;
+    private String contractorName;
+    private String contractNumber;
+    private Long contractorType;
+    private Long priceType;
+    private int index;
+    private String street;
+    private String houseNumber;
+    private Long city;
+    private Long country;
 
 }

@@ -23,9 +23,9 @@ public class ContractorCommand {
     private Long priceType;
     private Long country;
     private Long city;
-    int index;
-    String street;
-    String houseNumber;
+    private int index;
+    private String street;
+    private String houseNumber;
 
 
 }

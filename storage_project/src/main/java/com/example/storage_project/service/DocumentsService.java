@@ -1,8 +1,8 @@
 package com.example.storage_project.service;
 
 import com.example.storage_project.command.document.*;
-import com.example.storage_project.dao.DocumentsDao;
-import com.example.storage_project.model.MyOrganization;
+import com.example.storage_project.dao.documents.DocumentsDao;
+import com.example.storage_project.model.myOrganization.MyOrganization;
 import com.example.storage_project.model.contractor.Contractors;
 import com.example.storage_project.model.document.Document;
 import com.example.storage_project.model.document.DocumentDetails;

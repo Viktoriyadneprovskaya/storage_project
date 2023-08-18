@@ -2,7 +2,7 @@ package com.example.storage_project.service;
 
 import com.example.storage_project.command.reports.ProductSales;
 import com.example.storage_project.command.reports.ProductsBalance;
-import com.example.storage_project.dao.ReportsDao;
+import com.example.storage_project.dao.reports.ReportsDao;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

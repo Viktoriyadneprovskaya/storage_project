@@ -21,4 +21,5 @@ public class EmployeeUpdateCommand {
     String firstName;
     String lastName;
     Long jobTitle;
+    Long role;
 }

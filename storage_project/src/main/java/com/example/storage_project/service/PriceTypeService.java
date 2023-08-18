@@ -1,6 +1,6 @@
 package com.example.storage_project.service;
 
-import com.example.storage_project.dao.PriceTypeDao;
+import com.example.storage_project.dao.documents.PriceTypeDao;
 import com.example.storage_project.model.product.PriceType;
 import org.springframework.stereotype.Service;
 

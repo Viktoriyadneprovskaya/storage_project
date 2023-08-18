@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/documents")
@@ -21,9 +23,12 @@ public class DocumentsController {
 
     @GetMapping
     public String getAllDocuments(Model model, @RequestParam("invoice_type") Long invoiceType) {
-        List<Document> documents = documentsService.getAllDocuments(invoiceType);
+        List<Document> documents1 = documentsService.getAllDocuments(invoiceType);
+        List<Document> documents = documents1.stream()
+                        .sorted(Comparator.comparing(Document::getCreationDate, Comparator.reverseOrder()))
+                        .collect(Collectors.toList());
         model.addAttribute("documents", documents);
-        return "documents";
+        return "documents/documents";
     }
 
     @GetMapping("/delete")
@@ -37,9 +42,9 @@ public class DocumentsController {
         DocumentCommand documentCommand = documentsService.loadNewDocument(invoiceType);
         model.addAttribute("documentCommand", documentCommand);
        if(invoiceType == 2){
-           return "new_document";
+           return "documents/new_document";
        }else {
-           return "new_input_document";
+           return "documents/new_input_document";
        }
     }
     @PostMapping("/new_document/save")

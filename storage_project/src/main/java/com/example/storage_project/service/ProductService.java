@@ -2,7 +2,7 @@ package com.example.storage_project.service;
 
 import com.example.storage_project.model.product.Product;
 import com.example.storage_project.command.product.ProductUpdateCommand;
-import com.example.storage_project.dao.ProductDao;
+import com.example.storage_project.dao.products.ProductDao;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

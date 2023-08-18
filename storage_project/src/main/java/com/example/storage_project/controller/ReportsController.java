@@ -34,7 +34,7 @@ public class ReportsController {
         List<ProductsBalance> productsBalanceList = reportsService.getProductBalanceReport();
         model.addAttribute("productBalanceList", productsBalanceList);
         model.addAttribute("dateNow",currentDate);
-        return "product_balance";
+        return "reports/product_balance";
     }
 
     @GetMapping("/sales_by_product")
@@ -45,14 +45,14 @@ public class ReportsController {
                 .endDate(currentDate.withDayOfMonth(currentDate.lengthOfMonth()))
                 .build();
         model.addAttribute("reportDates", reportDatesCommand);
-        return "product_sales_report";
+        return "reports/product_sales_report";
     }
 
     @PostMapping("/sales_by_product")
     public String getProductsSales(Model model, @ModelAttribute("reportDates") ReportDatesCommand reportDatesCommand) {
         List<ProductSales> productsSales = reportsService.getProductSalesByDate(reportDatesCommand.getStartDate(), reportDatesCommand.getEndDate());
         model.addAttribute("productSales", productsSales);
-        return "product_sales_report";
+        return "reports/product_sales_report";
     }
 
     @GetMapping("/product_sales_by_contractor")
@@ -65,7 +65,7 @@ public class ReportsController {
         List<Contractors> contractors = contractorService.getAllContractors(INVOICE_CONTRACTOR_TYPE);
         model.addAttribute("contractors", contractors);
         model.addAttribute("reportDates", reportDatesCommand);
-        return "product_sales_by_contractor_report";
+        return "reports/product_sales_by_contractor_report";
     }
 
     @PostMapping("product_sales_by_contractor")
@@ -78,6 +78,6 @@ public class ReportsController {
         model.addAttribute("productSales", productSales);
         model.addAttribute("contractor",contractor);
         model.addAttribute("contractor_id",contractorId);
-        return "product_sales_by_contractor_report";
+        return "reports/product_sales_by_contractor_report";
     }
 }

@@ -1,6 +1,7 @@
 package com.example.storage_project.controller;
 
 import com.example.storage_project.command.employee.EmployeeCommand;
+import com.example.storage_project.command.employee.EmployeeDTO;
 import com.example.storage_project.command.employee.EmployeeUpdateCommand;
 import com.example.storage_project.model.employee.Employee;
 import com.example.storage_project.model.employee.JobTitle;
@@ -40,7 +41,7 @@ public class EmployeeManagementController {
         model.addAttribute("employees", employees);
         model.addAttribute("roles", roles);
 
-        return "employees";
+        return "employees/employees";
     }
 
     @PostMapping("/save")

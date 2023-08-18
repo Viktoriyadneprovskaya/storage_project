@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.storage_project.model.contractor.Contractors;
-import com.example.storage_project.model.MyOrganization;
+import com.example.storage_project.model.myOrganization.MyOrganization;
 import com.example.storage_project.model.product.PriceType;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -44,7 +44,7 @@ public class Document {
     Contractors contractor;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "price_type")
-PriceType priceType;
+    PriceType priceType;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "my_organization_id")
     MyOrganization myOrganization;

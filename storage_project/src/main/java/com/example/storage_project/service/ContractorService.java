@@ -2,9 +2,9 @@ package com.example.storage_project.service;
 
 import com.example.storage_project.command.contractor.ContractorCommand;
 import com.example.storage_project.command.contractor.ContractorUpdateCommand;
-import com.example.storage_project.dao.ContractorsDao;
+import com.example.storage_project.dao.contractors.ContractorsDao;
 import com.example.storage_project.model.contractor.*;
-import com.example.storage_project.model.MyOrganization;
+import com.example.storage_project.model.myOrganization.MyOrganization;
 import com.example.storage_project.model.product.PriceType;
 import org.springframework.stereotype.Service;
 

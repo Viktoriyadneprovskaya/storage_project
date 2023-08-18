@@ -35,7 +35,7 @@ public class EntireDocumentController {
         model.addAttribute("document", document);
         model.addAttribute("doc_details", documentDetails);
         model.addAttribute("sum", sum);
-        return "/entire_document";
+        return "documents/entire_document";
     }
 
     @GetMapping("/update")
@@ -44,9 +44,9 @@ public class EntireDocumentController {
         DocumentUpdateCommand documentUpdateCommand = documentsService.documentToDocumentUpdateCommand(document_id);
         model.addAttribute("document", documentUpdateCommand);
         if (document.getInvoiceType().getInvoiceTypeId() == 2) {
-            return "/update_input_document";
+            return "documents/update_input_document";
         } else {
-            return "/update_document";
+            return "documents/update_document";
         }
     }
 

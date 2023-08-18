@@ -1,10 +1,11 @@
 package com.example.storage_project.dao.impl;
 import com.example.storage_project.model.employee.Employee;
 import com.example.storage_project.command.employee.EmployeeUpdateCommand;
-import com.example.storage_project.dao.EmployeeDao;
+import com.example.storage_project.dao.employees.EmployeeDao;
 import com.example.storage_project.model.employee.JobTitle;
 import com.example.storage_project.model.security.Role;
 import com.example.storage_project.service.JobTitleService;
+import com.example.storage_project.service.RoleService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,7 +20,6 @@ import java.util.Optional;
 public class EmployeeDaoImpl implements EmployeeDao {
     private final SessionFactory sessionFactory;
     private final JobTitleService jobTitleService;
-
 
     public EmployeeDaoImpl(SessionFactory sessionFactory, JobTitleService jobTitleService) {
         this.sessionFactory = sessionFactory;
@@ -68,6 +68,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
         transaction.commit();
         session.close();
     }
+
+    @Override
+    public void updateEmployeeByPassword(String password, Long id){
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Employee employee = session.get(Employee.class, id);
+        employee.setPassword(password);
+        transaction.commit();
+        session.close();
+    }
+
     @Override
     public Optional<Employee> findEmployeeByUsername(String username) {
         Session session = sessionFactory.openSession();
@@ -79,6 +90,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         session.close();
         return employee;
     }
+
     @Override
     public Employee getEmployeeById(Long id) {
         Session session = sessionFactory.openSession();

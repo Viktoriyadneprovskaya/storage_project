@@ -1,6 +1,6 @@
 package com.example.storage_project.dao.impl;
 
-import com.example.storage_project.dao.MeasureUnitDao;
+import com.example.storage_project.dao.documents.MeasureUnitDao;
 import com.example.storage_project.model.product.MeasureUnit;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

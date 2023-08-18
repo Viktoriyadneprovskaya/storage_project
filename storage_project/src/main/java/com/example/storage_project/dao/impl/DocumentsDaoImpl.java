@@ -1,6 +1,6 @@
 package com.example.storage_project.dao.impl;
 
-import com.example.storage_project.dao.DocumentsDao;
+import com.example.storage_project.dao.documents.DocumentsDao;
 import com.example.storage_project.model.document.Document;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

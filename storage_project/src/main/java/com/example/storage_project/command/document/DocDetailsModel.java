@@ -19,6 +19,5 @@ public class DocDetailsModel {
     Long products;
     Long measureUnits;
     Double quantities;
-
     Double price;
 }

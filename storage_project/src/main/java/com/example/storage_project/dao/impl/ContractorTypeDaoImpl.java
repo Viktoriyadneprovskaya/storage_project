@@ -1,6 +1,6 @@
 package com.example.storage_project.dao.impl;
 
-import com.example.storage_project.dao.ContractorTypeDao;
+import com.example.storage_project.dao.contractors.ContractorTypeDao;
 import com.example.storage_project.model.contractor.ContractorType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

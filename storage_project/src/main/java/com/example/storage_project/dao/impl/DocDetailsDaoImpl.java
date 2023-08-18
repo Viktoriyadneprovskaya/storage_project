@@ -4,7 +4,7 @@ package com.example.storage_project.dao.impl;
 import com.example.storage_project.command.document.DocDetailsUpdateModel;
 import com.example.storage_project.model.contractor.Contractors;
 import com.example.storage_project.model.document.DocumentDetails;
-import com.example.storage_project.dao.DocDetailsDao;
+import com.example.storage_project.dao.documents.DocDetailsDao;
 import com.example.storage_project.model.product.Product;
 import com.example.storage_project.service.MeasureUnitService;
 import com.example.storage_project.service.ProductService;

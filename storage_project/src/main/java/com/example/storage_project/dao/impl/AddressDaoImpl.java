@@ -1,7 +1,7 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.command.contractor.ContractorUpdateCommand;
-import com.example.storage_project.dao.AddressDao;
+import com.example.storage_project.dao.contractors.AddressDao;
 import com.example.storage_project.model.contractor.Address;
 import com.example.storage_project.model.contractor.City;
 import com.example.storage_project.model.contractor.Country;
@@ -23,24 +23,6 @@ public class AddressDaoImpl implements AddressDao {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.save(address);
-        transaction.commit();
-        session.close();
-    }
-    @Override
-    public Address getAddressById(Long id) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        Address address = session.get(Address.class, id);
-        transaction.commit();
-        session.close();
-        return address;
-    }
-    @Override
-    public void deleteAddressById(Long id) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        Address address = session.get(Address.class, id);
-        session.remove(address);
         transaction.commit();
         session.close();
     }

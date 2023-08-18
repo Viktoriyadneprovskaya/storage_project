@@ -2,7 +2,7 @@ package com.example.storage_project.controller;
 
 import com.example.storage_project.command.product.ProductCommand;
 import com.example.storage_project.command.product.ProductUpdateCommand;
-import com.example.storage_project.dao.MeasureUnitDao;
+import com.example.storage_project.dao.documents.MeasureUnitDao;
 import com.example.storage_project.model.product.MeasureUnit;
 import com.example.storage_project.model.product.Product;
 import com.example.storage_project.service.MeasureUnitService;
@@ -32,7 +32,7 @@ public class ProductController {
         List<MeasureUnit> measureUnits = measureUnitService.getAllMeasureUnits();
         model.addAttribute("products", products);
         model.addAttribute("measureUnits", measureUnits);
-        return "products";
+        return "products/products";
     }
 
     @PostMapping("/save")

@@ -1,7 +1,7 @@
 package com.example.storage_project.dao.impl;
 
 import com.example.storage_project.command.reports.ProductSales;
-import com.example.storage_project.dao.ReportsDao;
+import com.example.storage_project.dao.reports.ReportsDao;
 import com.example.storage_project.command.reports.ProductsBalance;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
